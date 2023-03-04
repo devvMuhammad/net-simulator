@@ -32,6 +32,7 @@ const FinalSection = () => {
     mcqArray,
     saveEnabled,
     setSaveEnabled,
+    setOptionChecked,
   } = useContext(context);
   //Important constants.
   const currentSubjectMCQsLength = mcqArray[subjectNumber].questions.length;
@@ -57,6 +58,7 @@ const FinalSection = () => {
     }
     setQuestionNumber((num) => num + 1);
     setSaveEnabled(false);
+    setOptionChecked(false);
   };
 
   const prevHandler = (e) => {

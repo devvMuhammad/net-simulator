@@ -7,7 +7,7 @@ const OptionsSection = () => {
   return (
     <section id="options-section">
       {mcqArray[subjectNumber].questions[questionNumber].options.map((elm) => (
-        <Option option={elm} key={Math.floor(Math.random() * 100)} />
+        <Option option={elm} key={elm} />
       ))}
     </section>
   );

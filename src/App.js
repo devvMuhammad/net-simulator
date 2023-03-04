@@ -14,6 +14,7 @@ function App() {
   const [subjectNumber, setSubjectNumber] = useState(0);
   const [questionNumber, setQuestionNumber] = useState(0);
   const [saveEnabled, setSaveEnabled] = useState(false);
+  const [optionChecked, setOptionChecked] = useState(false);
 
   const contextObject = {
     subjectNumber,
@@ -22,6 +23,8 @@ function App() {
     setQuestionNumber,
     saveEnabled,
     setSaveEnabled,
+    optionChecked,
+    setOptionChecked,
     mcqArray: mcqBank,
   };
   return (

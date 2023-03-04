@@ -8,6 +8,8 @@ const context = createContext({
   mcqArray: [],
   saveEnabled: false,
   setSaveEnabled: () => {},
+  optionChecked: false,
+  setOptionChecked: () => {},
 });
 
 export default context;

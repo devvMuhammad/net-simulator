@@ -6,6 +6,7 @@ const Option = ({ option }) => {
 
   const optionClickHandler = () => {
     setSaveEnabled(true);
+    // setOptionChecked(true);
   };
 
   return (
