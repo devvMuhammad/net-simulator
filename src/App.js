@@ -15,6 +15,14 @@ function App() {
   const [questionNumber, setQuestionNumber] = useState(0);
   const [saveEnabled, setSaveEnabled] = useState(false);
   const [optionChecked, setOptionChecked] = useState(false);
+  const [mcqArray, setMcqArray] = useState(mcqBank);
+  const updateSelectedOption = (subjectNumber, questionNumber, option) => {
+    setMcqArray(prevState => {
+      const copyOfMcqArray = [...prevState];
+      copyOfMcqArray[subjectNumber].questions[questionNumber].selectedOption = option;
+      return copyOfMcqArray;
+    })
+  };
 
   const contextObject = {
     subjectNumber,
@@ -25,7 +33,9 @@ function App() {
     setSaveEnabled,
     optionChecked,
     setOptionChecked,
-    mcqArray: mcqBank,
+    mcqArray,
+    setMcqArray,
+    updateSelectedOption
   };
   return (
     <>

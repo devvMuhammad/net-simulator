@@ -1,21 +1,23 @@
+/* eslint-disable react-hooks/exhaustive-deps */
 import React, { useContext } from "react";
 import context from "../context";
 
-const Option = ({ option }) => {
+const Option = ({ option, checked, onUpdate }) => {
   const { setSaveEnabled } = useContext(context);
 
-  const optionClickHandler = () => {
+  const optionChangeHandler = (event) => {
     setSaveEnabled(true);
-    // setOptionChecked(true);
+    onUpdate(option);
   };
 
   return (
     <div className="option">
       <input
         type="radio"
-        name="options"
+        name={"options"}
         value={option}
-        onChange={optionClickHandler}
+        onChange={optionChangeHandler}
+        checked={checked}
       />
       <textarea
         className="option-text-area"

@@ -8,6 +8,7 @@ const mcqArray = [
         answer: "2x",
         category: "unattempted",
         answerState: false,
+        selectedOption: "",
       },
       {
         question: "What is the value of pi?",
@@ -15,6 +16,7 @@ const mcqArray = [
         answer: "3.14",
         category: "unattempted",
         answerState: false,
+        selectedOption: "",
       },
       {
         question: "What is the value of log(1)?",
@@ -22,6 +24,7 @@ const mcqArray = [
         answer: "0",
         category: "unattempted",
         answerState: false,
+        selectedOption: "",
       },
       {
         question: "What is the square root of 64?",
@@ -29,6 +32,7 @@ const mcqArray = [
         answer: "8",
         category: "unattempted",
         answerState: false,
+        selectedOption: "",
       },
       {
         question: "What is the sum of angles in a triangle?",
@@ -36,6 +40,7 @@ const mcqArray = [
         answer: "180 degrees",
         category: "unattempted",
         answerState: false,
+        selectedOption: "",
       },
     ],
   },
@@ -48,6 +53,7 @@ const mcqArray = [
         answer: "F = ma",
         category: "unattempted",
         answerState: false,
+        selectedOption: "",
       },
       {
         question: "What is the SI unit of force?",
@@ -55,6 +61,7 @@ const mcqArray = [
         answer: "Newtons",
         category: "unattempted",
         answerState: false,
+        selectedOption: "",
       },
       {
         question: "What is the speed of light in a vacuum?",
@@ -67,6 +74,7 @@ const mcqArray = [
         answer: "299,792,458 m/s",
         category: "unattempted",
         answerState: false,
+        selectedOption: "",
       },
       {
         question: "What is the formula for kinetic energy?",
@@ -74,6 +82,7 @@ const mcqArray = [
         answer: "KE = 0.5mv^2",
         category: "unattempted",
         answerState: false,
+        selectedOption: "",
       },
       {
         question: "What is the first law of thermodynamics?",
@@ -86,6 +95,7 @@ const mcqArray = [
         answer: "Energy cannot be created or destroyed",
         category: "unattempted",
         answerState: false,
+        selectedOption: "",
       },
     ],
   },
@@ -98,6 +108,7 @@ const mcqArray = [
         answer: "Au",
         category: "unattempted",
         answerState: false,
+        selectedOption: "",
       },
       {
         question: "What is the formula for water?",
@@ -105,6 +116,7 @@ const mcqArray = [
         answer: "H2O",
         category: "unattempted",
         answerState: false,
+        selectedOption: "",
       },
       {
         question: "What is Avogadro's number?",
@@ -112,6 +124,7 @@ const mcqArray = [
         answer: "6.022 x 10^23",
         category: "unattempted",
         answerState: false,
+        selectedOption: "",
       },
       {
         question: "What is the pH of a neutral solution?",
@@ -119,6 +132,7 @@ const mcqArray = [
         answer: "7",
         category: "unattempted",
         answerState: false,
+        selectedOption: "",
       },
       {
         question: "What is the most abundant gas in the Earth's atmosphere?",
@@ -126,6 +140,7 @@ const mcqArray = [
         answer: "Nitrogen",
         category: "unattempted",
         answerState: false,
+        selectedOption: "",
       },
     ],
   },

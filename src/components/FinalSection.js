@@ -17,7 +17,6 @@ import previousSectionButton from "../images/PreviousSection.png";
 import previousSectionDisabled from "../images/PreviousSectionDisabled.png";
 import reviewButton from "../images/Review.png";
 import reviewButtonDisabled from "../images/DisabledReview.png";
-import haramiContext from "../HaramiContext";
 
 const FinalSection = () => {
   //States
@@ -58,7 +57,7 @@ const FinalSection = () => {
     }
     setQuestionNumber((num) => num + 1);
     setSaveEnabled(false);
-    setOptionChecked(false);
+    // setOptionChecked(false);
   };
 
   const prevHandler = (e) => {

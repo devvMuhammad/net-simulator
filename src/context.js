@@ -5,11 +5,13 @@ const context = createContext({
   setSubjectNumber: () => {},
   questionNumber: 0,
   setQuestionNumber: () => {},
-  mcqArray: [],
   saveEnabled: false,
   setSaveEnabled: () => {},
   optionChecked: false,
   setOptionChecked: () => {},
+  mcqArray: [],
+  setMcqArray: () => {},
+  updateSelectedOption: () => {},
 });
 
 export default context;
