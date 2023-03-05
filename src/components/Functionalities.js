@@ -21,7 +21,9 @@ import reviewButtonDisabled from "../images/DisabledReview.png";
 const FinalSection = () => {
   //States
   const [nextEnabled, setNextEnabled] = useState(true);
+  const [nextSectionEnabled, setNextSectionEnabled] = useState(true);
   const [previousEnabled, setPreviousEnabled] = useState(false);
+  const [previousSectionEnabled, setPreviousSectionEnabled] = useState(false);
   //Context
   const {
     questionNumber,
@@ -47,6 +49,10 @@ const FinalSection = () => {
         ? false
         : true
     );
+    setNextSectionEnabled(
+      subjectNumber === numberOfSubjects - 1 ? false : true
+    );
+    setPreviousSectionEnabled(subjectNumber === 0 ? false : true);
   }, [subjectNumber, questionNumber]);
   // Handler functions.
   const nextHandler = (e) => {
@@ -140,15 +146,25 @@ const FinalSection = () => {
             <input type="image" src={reviewButton} alt="save" />
             <input
               type="image"
-              src={nextSectionButton}
+              src={
+                nextSectionEnabled
+                  ? nextSectionButton
+                  : nextSectionButtonDisabled
+              }
               alt="save"
               onClick={nextSectionHandler}
+              disabled={!nextSectionEnabled}
             />
             <input
               type="image"
-              src={previousSectionButton}
+              src={
+                previousSectionEnabled
+                  ? previousSectionButton
+                  : previousSectionDisabled
+              }
               alt="save"
               onClick={previousSectionHandler}
+              disabled={!previousSectionEnabled}
             />
             <input
               type="image"

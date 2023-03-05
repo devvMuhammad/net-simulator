@@ -3,7 +3,7 @@ import { useState } from "react";
 import "./App.css";
 import context from "./context";
 import Ending from "./components/Ending";
-import FinalSection from "./components/FinalSection";
+import Functionalities from "./components/Functionalities";
 import FirstSection from "./components/FirstSection";
 import Header from "./components/Header";
 import OptionsSection from "./components/OptionsSection";
@@ -17,11 +17,12 @@ function App() {
   const [optionChecked, setOptionChecked] = useState(false);
   const [mcqArray, setMcqArray] = useState(mcqBank);
   const updateSelectedOption = (subjectNumber, questionNumber, option) => {
-    setMcqArray(prevState => {
+    setMcqArray((prevState) => {
       const copyOfMcqArray = [...prevState];
-      copyOfMcqArray[subjectNumber].questions[questionNumber].selectedOption = option;
+      copyOfMcqArray[subjectNumber].questions[questionNumber].selectedOption =
+        option;
       return copyOfMcqArray;
-    })
+    });
   };
 
   const contextObject = {
@@ -35,7 +36,7 @@ function App() {
     setOptionChecked,
     mcqArray,
     setMcqArray,
-    updateSelectedOption
+    updateSelectedOption,
   };
   return (
     <>
@@ -44,7 +45,7 @@ function App() {
         <FirstSection />
         <SecondSection />
         <OptionsSection />
-        <FinalSection />
+        <Functionalities />
         <Ending />
       </context.Provider>
     </>
