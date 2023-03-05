@@ -12,6 +12,8 @@ const context = createContext({
   mcqArray: [],
   setMcqArray: () => {},
   updateSelectedOption: () => {},
+  attemptMCQ: () => {},
+  reviewMCQ: () => {},
 });
 
 export default context;

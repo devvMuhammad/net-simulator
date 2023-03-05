@@ -7,7 +7,7 @@ const OptionsSection = () => {
     useContext(context);
 
   const updateKaro = (newSelectedOption) => {
-    updateSelectedOption(subjectNumber, questionNumber, newSelectedOption);
+    updateSelectedOption(newSelectedOption);
   };
   const selectedOption =
     mcqArray[subjectNumber].questions[questionNumber].selectedOption;

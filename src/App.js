@@ -16,6 +16,7 @@ function App() {
   const [saveEnabled, setSaveEnabled] = useState(false);
   const [optionChecked, setOptionChecked] = useState(false);
   const [mcqArray, setMcqArray] = useState(mcqBank);
+
   const updateSelectedOption = (subjectNumber, questionNumber, option) => {
     setMcqArray((prevState) => {
       const copyOfMcqArray = [...prevState];
@@ -24,6 +25,19 @@ function App() {
       return copyOfMcqArray;
     });
   };
+  const updateQuestionCategory = (category) => {
+    return () => {
+      setMcqArray((prevState) => {
+        const copyOfMcqArray = [...prevState];
+        copyOfMcqArray[subjectNumber].questions[questionNumber].category =
+          category;
+        return copyOfMcqArray;
+      });
+    };
+  };
+
+  const attemptMCQ = updateQuestionCategory("attempted");
+  const reviewMCQ = updateQuestionCategory("reviewable");
 
   const contextObject = {
     subjectNumber,
@@ -37,6 +51,8 @@ function App() {
     mcqArray,
     setMcqArray,
     updateSelectedOption,
+    attemptMCQ,
+    reviewMCQ,
   };
   return (
     <>

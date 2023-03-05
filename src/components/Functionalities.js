@@ -24,6 +24,7 @@ const FinalSection = () => {
   const [nextSectionEnabled, setNextSectionEnabled] = useState(true);
   const [previousEnabled, setPreviousEnabled] = useState(false);
   const [previousSectionEnabled, setPreviousSectionEnabled] = useState(false);
+  const [reviewEnabled, setReviewEnabled] = useState(false);
   //Context
   const {
     questionNumber,
@@ -33,7 +34,8 @@ const FinalSection = () => {
     mcqArray,
     saveEnabled,
     setSaveEnabled,
-    setOptionChecked,
+    attemptMCQ,
+    reviewMCQ,
   } = useContext(context);
   //Important constants.
   const currentSubjectMCQsLength = mcqArray[subjectNumber].questions.length;
@@ -76,6 +78,18 @@ const FinalSection = () => {
       return;
     }
     setQuestionNumber((num) => num - 1);
+  };
+
+  const saveHandler = (e) => {
+    console.log("Hi dear!");
+    attemptMCQ();
+    setReviewEnabled(true);
+    setSaveEnabled(false);
+  };
+
+  const reviewHandler = (e) => {
+    reviewMCQ();
+    setReviewEnabled(false);
   };
 
   const nextSectionHandler = (e) => {
@@ -127,7 +141,8 @@ const FinalSection = () => {
               type="image"
               src={saveEnabled ? saveButton : saveButtonDisabled}
               alt="save"
-              disabled={!nextEnabled}
+              onClick={saveHandler}
+              disabled={!saveEnabled}
             />
             <input
               type="image"
@@ -143,7 +158,13 @@ const FinalSection = () => {
               onClick={prevHandler}
               disabled={!previousEnabled}
             />
-            <input type="image" src={reviewButton} alt="save" />
+            <input
+              type="image"
+              src={reviewEnabled ? reviewButton : reviewButtonDisabled}
+              alt="save"
+              onClick={reviewHandler}
+              disabled={!reviewEnabled}
+            />
             <input
               type="image"
               src={
