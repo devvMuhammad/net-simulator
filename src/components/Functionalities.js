@@ -75,6 +75,7 @@ const FinalSection = () => {
     }
     setQuestionNumber((num) => num + 1);
     setSaveEnabled(false);
+    setReviewEnabled(false);
     // setOptionChecked(false);
   };
 

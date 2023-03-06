@@ -47,8 +47,6 @@ function App() {
   const saveAndOptionContextObject = {
     saveEnabled,
     setSaveEnabled,
-    optionChecked,
-    setOptionChecked,
   };
   // const mainActionsContext = {
   //   updateSelectedOption,
