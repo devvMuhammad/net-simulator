@@ -1,7 +1,12 @@
 /* eslint-disable react-hooks/exhaustive-deps */
 /* eslint-disable no-unused-vars */
 import React, { useContext, useEffect, useState } from "react";
-import context from "../context";
+import {
+  mainActionsContext,
+  mcqContext,
+  saveAndOptionContext,
+  subjectAndQuestionContext,
+} from "../context";
 import saveButton from "../images/Save.png";
 import saveButtonDisabled from "../images/DisabledSave.png";
 import nextButton from "../images/next.png";
@@ -26,17 +31,10 @@ const FinalSection = () => {
   const [previousSectionEnabled, setPreviousSectionEnabled] = useState(false);
   const [reviewEnabled, setReviewEnabled] = useState(false);
   //Context
-  const {
-    questionNumber,
-    setQuestionNumber,
-    subjectNumber,
-    setSubjectNumber,
-    mcqArray,
-    saveEnabled,
-    setSaveEnabled,
-    attemptMCQ,
-    reviewMCQ,
-  } = useContext(context);
+  const { questionNumber, setQuestionNumber, subjectNumber, setSubjectNumber } =
+    useContext(subjectAndQuestionContext);
+  const { mcqArray, setMcqArray } = useContext(mcqContext);
+  const { saveEnabled, setSaveEnabled } = useContext(saveAndOptionContext);
   //Important constants.
   const currentSubjectMCQsLength = mcqArray[subjectNumber].questions.length;
   const numberOfSubjects = mcqArray.length;
@@ -57,6 +55,18 @@ const FinalSection = () => {
     setPreviousSectionEnabled(subjectNumber === 0 ? false : true);
   }, [subjectNumber, questionNumber]);
   // Handler functions.
+  const updateQuestionCategory = (category) => {
+    return () => {
+      setMcqArray((prevState) => {
+        const copyOfMcqArray = [...prevState];
+        copyOfMcqArray[subjectNumber].questions[questionNumber].category =
+          category;
+        return copyOfMcqArray;
+      });
+    };
+  };
+  const attemptMCQ = updateQuestionCategory("attempted");
+  const reviewMCQ = updateQuestionCategory("reviewable");
   const nextHandler = (e) => {
     if (questionNumber === currentSubjectMCQsLength - 1) {
       setSubjectNumber((num) => (num >= numberOfSubjects ? 0 : num + 1)); //Reset for last subject, otherwise increment normally
@@ -130,6 +140,7 @@ const FinalSection = () => {
             // onChange={dropDownChangeHandler}
             // onClick={dropDownClickHandler}
           >
+            <option value="attempted">All</option>
             <option value="attempted">Attempted</option>
             <option value="reviewable">Reviewable</option>
             <option value="unattempted">Unattempted</option>

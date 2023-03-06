@@ -1,10 +1,13 @@
 import React, { useContext } from "react";
 import "../App.css";
-import context from "../context";
+import { subjectAndQuestionContext, mcqContext } from "../context";
 import studentImage from "../student-image.jpg";
 
 const FirstSection = () => {
-  const { subjectNumber, questionNumber, mcqArray } = useContext(context);
+  const { mcqArray } = useContext(mcqContext);
+  const { subjectNumber, questionNumber } = useContext(
+    subjectAndQuestionContext
+  );
   return (
     <section id="first-section">
       <div className="question">

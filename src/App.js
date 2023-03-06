@@ -1,7 +1,11 @@
 /* eslint-disable no-unused-vars */
 import { useState } from "react";
 import "./App.css";
-import context from "./context";
+import {
+  subjectAndQuestionContext,
+  mcqContext,
+  saveAndOptionContext,
+} from "./context";
 import Ending from "./components/Ending";
 import Functionalities from "./components/Functionalities";
 import FirstSection from "./components/FirstSection";
@@ -17,53 +21,56 @@ function App() {
   const [optionChecked, setOptionChecked] = useState(false);
   const [mcqArray, setMcqArray] = useState(mcqBank);
 
-  const updateSelectedOption = (subjectNumber, questionNumber, option) => {
-    setMcqArray((prevState) => {
-      const copyOfMcqArray = [...prevState];
-      copyOfMcqArray[subjectNumber].questions[questionNumber].selectedOption =
-        option;
-      return copyOfMcqArray;
-    });
-  };
-  const updateQuestionCategory = (category) => {
-    return () => {
-      setMcqArray((prevState) => {
-        const copyOfMcqArray = [...prevState];
-        copyOfMcqArray[subjectNumber].questions[questionNumber].category =
-          category;
-        return copyOfMcqArray;
-      });
-    };
-  };
-
-  const attemptMCQ = updateQuestionCategory("attempted");
-  const reviewMCQ = updateQuestionCategory("reviewable");
-
-  const contextObject = {
+  // const contextObject = {
+  //   subjectNumber,
+  //   setSubjectNumber,
+  //   questionNumber,
+  //   setQuestionNumber,
+  //   saveEnabled,
+  //   setSaveEnabled,
+  //   mcqArray,
+  //   setMcqArray,
+  //   updateSelectedOption,
+  //   attemptMCQ,
+  //   reviewMCQ,
+  // };
+  const subjectAndQuestionContextObject = {
     subjectNumber,
     setSubjectNumber,
     questionNumber,
     setQuestionNumber,
+  };
+  const mcqContextObject = {
+    mcqArray: mcqBank,
+    setMcqArray,
+  };
+  const saveAndOptionContextObject = {
     saveEnabled,
     setSaveEnabled,
     optionChecked,
     setOptionChecked,
-    mcqArray,
-    setMcqArray,
-    updateSelectedOption,
-    attemptMCQ,
-    reviewMCQ,
   };
+  // const mainActionsContext = {
+  //   updateSelectedOption,
+  //   attemptMCQ,
+  //   reviewMCQ,
+  // };
   return (
     <>
-      <context.Provider value={contextObject}>
-        <Header />
-        <FirstSection />
-        <SecondSection />
-        <OptionsSection />
-        <Functionalities />
-        <Ending />
-      </context.Provider>
+      <mcqContext.Provider value={mcqContextObject}>
+        <subjectAndQuestionContext.Provider
+          value={subjectAndQuestionContextObject}
+        >
+          <Header />
+          <FirstSection />
+          <SecondSection />
+          <saveAndOptionContext.Provider value={saveAndOptionContextObject}>
+            <OptionsSection />
+            <Functionalities />
+          </saveAndOptionContext.Provider>
+          <Ending />
+        </subjectAndQuestionContext.Provider>
+      </mcqContext.Provider>
     </>
   );
 }

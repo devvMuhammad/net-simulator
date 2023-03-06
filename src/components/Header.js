@@ -1,9 +1,11 @@
 import React, { useContext } from "react";
 import "../App.css";
-import context from "../context";
+import { mcqContext, subjectAndQuestionContext } from "../context";
 
 const Header = () => {
-  const { subjectNumber, mcqArray } = useContext(context);
+  const { subjectNumber } = useContext(subjectAndQuestionContext);
+  const { mcqArray } = useContext(mcqContext);
+
   return (
     <header>
       <p className="subject">{mcqArray[subjectNumber].subject}</p>

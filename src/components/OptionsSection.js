@@ -1,11 +1,21 @@
 import React, { useContext } from "react";
-import context from "../context";
+import { subjectAndQuestionContext, mcqContext } from "../context";
 import Option from "./Option";
 
 const OptionsSection = () => {
-  const { subjectNumber, questionNumber, mcqArray, updateSelectedOption } =
-    useContext(context);
+  const { subjectNumber, questionNumber } = useContext(
+    subjectAndQuestionContext
+  );
+  const { mcqArray, setMcqArray } = useContext(mcqContext);
 
+  const updateSelectedOption = (option) => {
+    setMcqArray((prevState) => {
+      const copyOfMcqArray = [...prevState];
+      copyOfMcqArray[subjectNumber].questions[questionNumber].selectedOption =
+        option;
+      return copyOfMcqArray;
+    });
+  };
   const updateKaro = (newSelectedOption) => {
     updateSelectedOption(newSelectedOption);
   };

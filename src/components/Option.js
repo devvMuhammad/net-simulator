@@ -1,9 +1,9 @@
 /* eslint-disable react-hooks/exhaustive-deps */
 import React, { useContext } from "react";
-import context from "../context";
+import { saveAndOptionContext } from "../context";
 
 const Option = ({ option, checked, onUpdate }) => {
-  const { setSaveEnabled } = useContext(context);
+  const { setSaveEnabled } = useContext(saveAndOptionContext);
 
   const optionChangeHandler = (event) => {
     setSaveEnabled(true);
