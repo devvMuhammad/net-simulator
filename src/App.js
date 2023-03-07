@@ -1,11 +1,7 @@
 /* eslint-disable no-unused-vars */
 import { useState } from "react";
 import "./App.css";
-import {
-  subjectAndQuestionContext,
-  mcqContext,
-  saveAndOptionContext,
-} from "./context";
+import { subjectAndQuestionContext, mcqContext, saveContext } from "./context";
 import Ending from "./components/Ending";
 import Functionalities from "./components/Functionalities";
 import FirstSection from "./components/FirstSection";
@@ -44,15 +40,11 @@ function App() {
     mcqArray: mcqBank,
     setMcqArray,
   };
-  const saveAndOptionContextObject = {
+  const saveContextObject = {
     saveEnabled,
     setSaveEnabled,
   };
-  // const mainActionsContext = {
-  //   updateSelectedOption,
-  //   attemptMCQ,
-  //   reviewMCQ,
-  // };
+
   return (
     <>
       <mcqContext.Provider value={mcqContextObject}>
@@ -62,10 +54,10 @@ function App() {
           <Header />
           <FirstSection />
           <SecondSection />
-          <saveAndOptionContext.Provider value={saveAndOptionContextObject}>
+          <saveContext.Provider value={saveContextObject}>
             <OptionsSection />
             <Functionalities />
-          </saveAndOptionContext.Provider>
+          </saveContext.Provider>
           <Ending />
         </subjectAndQuestionContext.Provider>
       </mcqContext.Provider>

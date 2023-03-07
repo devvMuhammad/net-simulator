@@ -27,11 +27,9 @@ export const mcqContext = createContext({
   setMcqArray: () => {},
 });
 
-export const saveAndOptionContext = createContext({
+export const saveContext = createContext({
   saveEnabled: false,
   setSaveEnabled: () => {},
-  optionChecked: false,
-  setOptionChecked: () => {},
 });
 
 export default context;
