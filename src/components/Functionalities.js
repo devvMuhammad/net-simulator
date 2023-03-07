@@ -18,7 +18,7 @@ import previousSectionDisabled from "../images/PreviousSectionDisabled.png";
 import reviewButton from "../images/Review.png";
 import reviewButtonDisabled from "../images/DisabledReview.png";
 
-const FinalSection = () => {
+const Functionalities = ({ dropdownValue, setDropdownValue }) => {
   //States
   const [nextEnabled, setNextEnabled] = useState(true);
   const [nextSectionEnabled, setNextSectionEnabled] = useState(true);
@@ -50,18 +50,6 @@ const FinalSection = () => {
     setPreviousSectionEnabled(subjectNumber === 0 ? false : true);
   }, [subjectNumber, questionNumber]);
   // Handler functions.
-  const updateQuestionCategory = (category) => {
-    return () => {
-      setMcqArray((prevState) => {
-        const copyOfMcqArray = [...prevState];
-        copyOfMcqArray[subjectNumber].questions[questionNumber].category =
-          category;
-        return copyOfMcqArray;
-      });
-    };
-  };
-  const attemptMCQ = updateQuestionCategory("attempted");
-  const reviewMCQ = updateQuestionCategory("reviewable");
 
   const nextHandler = (e) => {
     if (questionNumber === currentSubjectMCQsLength - 1) {
@@ -127,6 +115,35 @@ const FinalSection = () => {
     setQuestionNumber(currentSubjectMCQsLength - 1);
   };
 
+  const updateQuestionCategory = (category) => {
+    return () => {
+      setMcqArray((prevState) => {
+        const copyOfMcqArray = [...prevState];
+        copyOfMcqArray[subjectNumber].questions[questionNumber].category =
+          category;
+        return copyOfMcqArray;
+      });
+    };
+  };
+  const attemptMCQ = updateQuestionCategory("attempted");
+  const reviewMCQ = updateQuestionCategory("reviewable");
+
+  const dropdownChangeHandler = (event) => {
+    setDropdownValue(event.target.value);
+    console.log("change");
+  };
+  // if (dropdownValue === "Attempted") {
+  //   const attemptedMCQs = mcqArray.map((elm) => {
+  //     return {
+  //       ...elm,
+  //       questions: elm.questions.filter(
+  //         (question) => question.category === "attempted"
+  //       ),
+  //     };
+  //   });
+  //   onAttempted(attemptedMCQs);
+  // }
+
   return (
     <section id="final-section">
       <div className="functionalities">
@@ -134,13 +151,12 @@ const FinalSection = () => {
           <select
             name="status"
             className="dropdown"
-            // onChange={dropDownChangeHandler}
-            // onClick={dropDownClickHandler}
+            onChange={dropdownChangeHandler}
           >
-            <option value="attempted">All</option>
-            <option value="attempted">Attempted</option>
-            <option value="reviewable">Reviewable</option>
-            <option value="unattempted">Unattempted</option>
+            <option value="All">All</option>
+            <option value="Attempted">Attempted</option>
+            <option value="Reviewable">Reviewable</option>
+            <option value="Unattempted">Unattempted</option>
           </select>
         </div>
         <div className="buttons-container">
@@ -220,4 +236,4 @@ const FinalSection = () => {
   );
 };
 
-export default FinalSection;
+export default Functionalities;

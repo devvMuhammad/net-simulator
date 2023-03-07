@@ -8,6 +8,8 @@ const FirstSection = () => {
   const { subjectNumber, questionNumber } = useContext(
     subjectAndQuestionContext
   );
+  console.log(mcqArray);
+  console.log(mcqArray[subjectNumber].questions.length);
   return (
     <section id="first-section">
       <div className="question">

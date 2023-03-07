@@ -1,5 +1,5 @@
 /* eslint-disable no-unused-vars */
-import { useState } from "react";
+import { useState, useEffect } from "react";
 import "./App.css";
 import { subjectAndQuestionContext, mcqContext, saveContext } from "./context";
 import Ending from "./components/Ending";
@@ -14,22 +14,9 @@ function App() {
   const [subjectNumber, setSubjectNumber] = useState(0);
   const [questionNumber, setQuestionNumber] = useState(0);
   const [saveEnabled, setSaveEnabled] = useState(false);
-  const [optionChecked, setOptionChecked] = useState(false);
+  const [dropdownValue, setDropdownValue] = useState("All");
   const [mcqArray, setMcqArray] = useState(mcqBank);
 
-  // const contextObject = {
-  //   subjectNumber,
-  //   setSubjectNumber,
-  //   questionNumber,
-  //   setQuestionNumber,
-  //   saveEnabled,
-  //   setSaveEnabled,
-  //   mcqArray,
-  //   setMcqArray,
-  //   updateSelectedOption,
-  //   attemptMCQ,
-  //   reviewMCQ,
-  // };
   const subjectAndQuestionContextObject = {
     subjectNumber,
     setSubjectNumber,
@@ -37,14 +24,33 @@ function App() {
     setQuestionNumber,
   };
   const mcqContextObject = {
-    mcqArray: mcqBank,
+    mcqArray,
     setMcqArray,
   };
   const saveContextObject = {
     saveEnabled,
     setSaveEnabled,
   };
-
+  useEffect(() => {
+    console.log(dropdownValue);
+    if (dropdownValue === "Attempted") {
+      const attemptedMCQs = mcqArray.map((elm) => {
+        return {
+          ...elm,
+          questions: elm.questions.filter(
+            (question) => question.category === "attempted"
+          ),
+        };
+      });
+      setMcqArray(attemptedMCQs);
+      setSubjectNumber(0);
+      setQuestionNumber(0);
+    }
+    if (dropdownValue === "All") {
+      setMcqArray(mcqBank);
+    }
+  }, [dropdownValue]);
+  console.log(mcqArray);
   return (
     <>
       <mcqContext.Provider value={mcqContextObject}>
@@ -56,7 +62,10 @@ function App() {
           <SecondSection />
           <saveContext.Provider value={saveContextObject}>
             <OptionsSection />
-            <Functionalities />
+            <Functionalities
+              dropdownValue={dropdownValue}
+              setDropdownValue={setDropdownValue}
+            />
           </saveContext.Provider>
           <Ending />
         </subjectAndQuestionContext.Provider>
