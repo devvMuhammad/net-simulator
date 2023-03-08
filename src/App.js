@@ -15,6 +15,8 @@ function App() {
   const [questionNumber, setQuestionNumber] = useState(0);
   const [saveEnabled, setSaveEnabled] = useState(false);
   const [dropdownValue, setDropdownValue] = useState("All");
+  const [allMCQs, setAllMCQs] = useState(mcqBank);
+  // const [otherMCQs, setOtherMCQs] = useState();
   const [mcqArray, setMcqArray] = useState(mcqBank);
 
   const subjectAndQuestionContextObject = {
@@ -42,15 +44,58 @@ function App() {
           ),
         };
       });
+      let totalQuestions = 0;
+      attemptedMCQs.map((elm) => (totalQuestions += elm.questions.length));
+      // console.log(totalQuestions);
+      if (totalQuestions === 0) return;
       setMcqArray(attemptedMCQs);
       setSubjectNumber(0);
       setQuestionNumber(0);
+      console.log("Hi from below");
+    }
+    if (dropdownValue === "Reviewable") {
+      const reviewableMCQs = mcqArray.map((elm) => {
+        return {
+          ...elm,
+          questions: elm.questions.filter(
+            (question) => question.category === "reviewable"
+          ),
+        };
+      });
+      let totalQuestions = 0;
+      reviewableMCQs.map((elm) => (totalQuestions += elm.questions.length));
+      console.log(totalQuestions);
+      if (totalQuestions === 0) return;
+      setMcqArray(reviewableMCQs);
+      setSubjectNumber(0);
+      setQuestionNumber(0);
+      console.log("Hi from below");
+    }
+    if (dropdownValue === "Unattempted") {
+      const unattemptedMCQs = mcqArray.map((elm) => {
+        return {
+          ...elm,
+          questions: elm.questions.filter(
+            (question) => question.category === "unattempted"
+          ),
+        };
+      });
+      let totalQuestions = 0;
+      unattemptedMCQs.map((elm) => (totalQuestions += elm.questions.length));
+      // console.log(totalQuestions);
+      if (totalQuestions === 0) return;
+      setMcqArray(unattemptedMCQs);
+      setSubjectNumber(0);
+      setQuestionNumber(0);
+      // console.log("Hi from below");
     }
     if (dropdownValue === "All") {
-      setMcqArray(mcqBank);
+      setSubjectNumber(0);
+      setQuestionNumber(0);
+      setMcqArray(allMCQs);
     }
   }, [dropdownValue]);
-  console.log(mcqArray);
+  // console.log(mcqArray);
   return (
     <>
       <mcqContext.Provider value={mcqContextObject}>
@@ -62,10 +107,7 @@ function App() {
           <SecondSection />
           <saveContext.Provider value={saveContextObject}>
             <OptionsSection />
-            <Functionalities
-              dropdownValue={dropdownValue}
-              setDropdownValue={setDropdownValue}
-            />
+            <Functionalities setDropdownValue={setDropdownValue} />
           </saveContext.Provider>
           <Ending />
         </subjectAndQuestionContext.Provider>

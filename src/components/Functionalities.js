@@ -18,7 +18,7 @@ import previousSectionDisabled from "../images/PreviousSectionDisabled.png";
 import reviewButton from "../images/Review.png";
 import reviewButtonDisabled from "../images/DisabledReview.png";
 
-const Functionalities = ({ dropdownValue, setDropdownValue }) => {
+const Functionalities = ({ setDropdownValue }) => {
   //States
   const [nextEnabled, setNextEnabled] = useState(true);
   const [nextSectionEnabled, setNextSectionEnabled] = useState(true);
@@ -32,7 +32,11 @@ const Functionalities = ({ dropdownValue, setDropdownValue }) => {
   const { saveEnabled, setSaveEnabled } = useContext(saveContext);
   //Important constants.
   const currentSubjectMCQsLength = mcqArray[subjectNumber].questions.length;
+  // console.log(currentSubjectMCQsLength);
   const numberOfSubjects = mcqArray.length;
+  if (currentSubjectMCQsLength === 0) {
+    setDropdownValue("All");
+  }
   //UseEffect
   useEffect(() => {
     setPreviousEnabled(
@@ -52,6 +56,21 @@ const Functionalities = ({ dropdownValue, setDropdownValue }) => {
   // Handler functions.
 
   const nextHandler = (e) => {
+    let nextSubjectMCQSlength;
+    if (subjectNumber === numberOfSubjects - 1) {
+      nextSubjectMCQSlength = 0;
+    }
+    nextSubjectMCQSlength =
+      mcqArray[subjectNumber + 1].questions.length || "abc";
+    console.log(nextSubjectMCQSlength);
+    if (
+      nextSubjectMCQSlength === 0 &&
+      questionNumber === currentSubjectMCQsLength - 1
+    ) {
+      console.log("LLLLLLLLLLL");
+      setDropdownValue("All");
+      return;
+    }
     if (questionNumber === currentSubjectMCQsLength - 1) {
       setSubjectNumber((num) => (num >= numberOfSubjects ? 0 : num + 1)); //Reset for last subject, otherwise increment normally
       setQuestionNumber(0);
