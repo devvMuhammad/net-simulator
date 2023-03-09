@@ -20,7 +20,6 @@ function App() {
   const [allMCQs, setAllMCQs] = useState(mcqBank);
   // const [otherMCQs, setOtherMCQs] = useState();
   const [mcqArray, setMcqArray] = useState(mcqBank);
-  const [totalSawalat, setTotalSawalaat] = useState();
   const subjectAndQuestionContextObject = {
     subjectNumber,
     setSubjectNumber,
