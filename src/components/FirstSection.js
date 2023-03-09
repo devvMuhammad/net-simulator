@@ -1,15 +1,14 @@
-import React, { useContext } from "react";
+import React, { useContext, useEffect, useState } from "react";
 import "../App.css";
 import { subjectAndQuestionContext, mcqContext } from "../context";
 import studentImage from "../student-image.jpg";
 
-const FirstSection = () => {
+const FirstSection = ({ dropdownValue, outOf }) => {
   const { mcqArray } = useContext(mcqContext);
-  const { subjectNumber, questionNumber } = useContext(
+  const { subjectNumber, questionNumber, otherQuestionNumber } = useContext(
     subjectAndQuestionContext
   );
-  // console.log(mcqArray);
-  // console.log(mcqArray[subjectNumber].questions.length);
+
   return (
     <section id="first-section">
       <div className="question">
@@ -17,7 +16,13 @@ const FirstSection = () => {
           <h4>Question No:</h4>
           <span className="question-number-out-of">
             {" "}
-            {questionNumber + 1} of {mcqArray[subjectNumber].questions.length}
+            {dropdownValue === "All"
+              ? questionNumber + 1
+              : otherQuestionNumber}{" "}
+            of{" "}
+            {dropdownValue === "All"
+              ? mcqArray[subjectNumber].questions.length
+              : outOf}
           </span>
         </div>
         <div className="question-statement">

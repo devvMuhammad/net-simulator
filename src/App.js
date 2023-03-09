@@ -13,6 +13,8 @@ import mcqBank from "./mcqArray";
 function App() {
   const [subjectNumber, setSubjectNumber] = useState(0);
   const [questionNumber, setQuestionNumber] = useState(0);
+  const [otherQuestionNumber, setOtherQuestionNumber] = useState(1);
+  const [outOf, setOutOf] = useState();
   const [saveEnabled, setSaveEnabled] = useState(false);
   const [dropdownValue, setDropdownValue] = useState("All");
   const [allMCQs, setAllMCQs] = useState(mcqBank);
@@ -24,6 +26,8 @@ function App() {
     setSubjectNumber,
     questionNumber,
     setQuestionNumber,
+    otherQuestionNumber,
+    setOtherQuestionNumber,
   };
   const mcqContextObject = {
     mcqArray,
@@ -47,11 +51,16 @@ function App() {
       let totalQuestions = 0;
       attemptedMCQs.map((elm) => (totalQuestions += elm.questions.length));
       // console.log(totalQuestions);
-      if (totalQuestions === 0) return;
+      if (totalQuestions === 0) {
+        setDropdownValue("All");
+        return;
+      }
       setMcqArray(attemptedMCQs);
+      setOutOf(totalQuestions);
       setSubjectNumber(0);
       setQuestionNumber(0);
-      console.log("Hi from below");
+      setOtherQuestionNumber(1);
+      // console.log("Hi from below");
     }
     if (dropdownValue === "Reviewable") {
       const reviewableMCQs = mcqArray.map((elm) => {
@@ -65,10 +74,14 @@ function App() {
       let totalQuestions = 0;
       reviewableMCQs.map((elm) => (totalQuestions += elm.questions.length));
       console.log(totalQuestions);
-      if (totalQuestions === 0) return;
+      if (totalQuestions === 0) {
+        setDropdownValue("All");
+        return;
+      }
       setMcqArray(reviewableMCQs);
+      setOutOf(totalQuestions);
       setSubjectNumber(0);
-      setQuestionNumber(0);
+      setOtherQuestionNumber(1);
       console.log("Hi from below");
     }
     if (dropdownValue === "Unattempted") {
@@ -83,10 +96,14 @@ function App() {
       let totalQuestions = 0;
       unattemptedMCQs.map((elm) => (totalQuestions += elm.questions.length));
       // console.log(totalQuestions);
-      if (totalQuestions === 0) return;
+      if (totalQuestions === 0) {
+        setDropdownValue("All");
+        return;
+      }
       setMcqArray(unattemptedMCQs);
+      setOutOf(totalQuestions);
       setSubjectNumber(0);
-      setQuestionNumber(0);
+      setOtherQuestionNumber(1);
       // console.log("Hi from below");
     }
     if (dropdownValue === "All") {
@@ -103,11 +120,15 @@ function App() {
           value={subjectAndQuestionContextObject}
         >
           <Header />
-          <FirstSection />
+          <FirstSection dropdownValue={dropdownValue} outOf={outOf} />
           <SecondSection />
           <saveContext.Provider value={saveContextObject}>
             <OptionsSection />
-            <Functionalities setDropdownValue={setDropdownValue} />
+            <Functionalities
+              setDropdownValue={setDropdownValue}
+              dropdownValue={dropdownValue}
+              outOf={outOf}
+            />
           </saveContext.Provider>
           <Ending />
         </subjectAndQuestionContext.Provider>

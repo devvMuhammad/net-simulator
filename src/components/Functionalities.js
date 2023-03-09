@@ -18,7 +18,7 @@ import previousSectionDisabled from "../images/PreviousSectionDisabled.png";
 import reviewButton from "../images/Review.png";
 import reviewButtonDisabled from "../images/DisabledReview.png";
 
-const Functionalities = ({ setDropdownValue }) => {
+const Functionalities = ({ setDropdownValue, dropdownValue, outOf }) => {
   //States
   const [nextEnabled, setNextEnabled] = useState(true);
   const [nextSectionEnabled, setNextSectionEnabled] = useState(true);
@@ -26,8 +26,14 @@ const Functionalities = ({ setDropdownValue }) => {
   const [previousSectionEnabled, setPreviousSectionEnabled] = useState(false);
   const [reviewEnabled, setReviewEnabled] = useState(false);
   //Context
-  const { questionNumber, setQuestionNumber, subjectNumber, setSubjectNumber } =
-    useContext(subjectAndQuestionContext);
+  const {
+    questionNumber,
+    setQuestionNumber,
+    subjectNumber,
+    setSubjectNumber,
+    otherQuestionNumber,
+    setOtherQuestionNumber,
+  } = useContext(subjectAndQuestionContext);
   const { mcqArray, setMcqArray } = useContext(mcqContext);
   const { saveEnabled, setSaveEnabled } = useContext(saveContext);
   //Important constants.
@@ -42,12 +48,17 @@ const Functionalities = ({ setDropdownValue }) => {
     setPreviousEnabled(
       subjectNumber === 0 && questionNumber === 0 ? false : true
     );
-    setNextEnabled(
-      subjectNumber === numberOfSubjects - 1 &&
-        questionNumber === currentSubjectMCQsLength - 1
-        ? false
-        : true
-    );
+
+    setNextEnabled((prevState) => {
+      if (dropdownValue !== "All") {
+        return true;
+      } else {
+        return subjectNumber === numberOfSubjects - 1 &&
+          questionNumber === currentSubjectMCQsLength - 1
+          ? false
+          : true;
+      }
+    });
     setNextSectionEnabled(
       subjectNumber === numberOfSubjects - 1 ? false : true
     );
@@ -56,29 +67,44 @@ const Functionalities = ({ setDropdownValue }) => {
   // Handler functions.
 
   const nextHandler = (e) => {
-    let nextSubjectMCQSlength;
-    if (subjectNumber === numberOfSubjects - 1) {
-      nextSubjectMCQSlength = 0;
+    if (dropdownValue !== "All") {
+      if (otherQuestionNumber >= outOf) {
+        setDropdownValue("All");
+        return;
+      }
+      setOtherQuestionNumber((num) => num + 1);
+      if (questionNumber === currentSubjectMCQsLength - 1) {
+        setSubjectNumber((num) => (num >= numberOfSubjects ? 0 : num + 1)); //Reset for last subject, otherwise increment normally
+        setQuestionNumber(0);
+        return;
+      }
+      setQuestionNumber((num) => num + 1);
+      console.log(subjectNumber);
+    } else {
+      if (questionNumber === currentSubjectMCQsLength - 1) {
+        setSubjectNumber((num) => (num >= numberOfSubjects ? 0 : num + 1)); //Reset for last subject, otherwise increment normally
+        setQuestionNumber(0);
+        return;
+      }
+      setQuestionNumber((num) => num + 1);
+      setSaveEnabled(false);
+      setReviewEnabled(false);
+      // setOptionChecked(false);
     }
-    nextSubjectMCQSlength =
-      mcqArray[subjectNumber + 1].questions.length || "abc";
-    console.log(nextSubjectMCQSlength);
-    if (
-      nextSubjectMCQSlength === 0 &&
-      questionNumber === currentSubjectMCQsLength - 1
-    ) {
-      console.log("LLLLLLLLLLL");
-      setDropdownValue("All");
-      return;
-    }
-    if (questionNumber === currentSubjectMCQsLength - 1) {
-      setSubjectNumber((num) => (num >= numberOfSubjects ? 0 : num + 1)); //Reset for last subject, otherwise increment normally
-      setQuestionNumber(0);
-      return;
-    }
-    setQuestionNumber((num) => num + 1);
-    setSaveEnabled(false);
-    setReviewEnabled(false);
+
+    // if (questionNumber === currentSubjectMCQsLength - 1) {
+    //   //AT LAST QUESTION AND SUBJECT, HITTING NEXT SHOULD SEND YOU TO 'ALL'.
+    //   if (dropdownValue !== "All" && subjectNumber === numberOfSubjects - 1) {
+    //     setDropdownValue("All");
+    //     return;
+    //   }
+    //   setSubjectNumber((num) => (num >= numberOfSubjects ? 0 : num + 1)); //Reset for last subject, otherwise increment normally
+    //   setQuestionNumber(0);
+    //   return;
+    // }
+    // setQuestionNumber((num) => num + 1);
+    // setSaveEnabled(false);
+    // setReviewEnabled(false);
     // setOptionChecked(false);
   };
 
@@ -171,6 +197,7 @@ const Functionalities = ({ setDropdownValue }) => {
             name="status"
             className="dropdown"
             onChange={dropdownChangeHandler}
+            value={dropdownValue}
           >
             <option value="All">All</option>
             <option value="Attempted">Attempted</option>
