@@ -40,15 +40,16 @@ function App() {
   useEffect(() => {
     console.log(dropdownValue);
     if (dropdownValue === "Attempted") {
-      let attemptedMCQs = mcqArray.map((elm) => {
-        return {
-          ...elm,
-          questions: elm.questions.filter(
-            (question) => question.category === "attempted"
-          ),
-        };
-      });
-      attemptedMCQs = attemptedMCQs.filter((elm) => elm.questions.length !== 0);
+      let attemptedMCQs = mcqArray
+        .map((elm) => {
+          return {
+            ...elm,
+            questions: elm.questions.filter(
+              (question) => question.category === "attempted"
+            ),
+          };
+        })
+        .filter((elm) => elm.questions.length !== 0);
 
       let totalQuestions = 0;
       attemptedMCQs.map((elm) => (totalQuestions += elm.questions.length));
@@ -65,17 +66,16 @@ function App() {
       // console.log("Hi from below");
     }
     if (dropdownValue === "Reviewable") {
-      const reviewableMCQs = mcqArray.map((elm) => {
-        return {
-          ...elm,
-          questions: elm.questions.filter(
-            (question) => question.category === "reviewable"
-          ),
-        };
-      });
-      reviewableMCQs = reviewableMCQs.filter(
-        (elm) => elm.questions.length !== 0
-      );
+      const reviewableMCQs = mcqArray
+        .map((elm) => {
+          return {
+            ...elm,
+            questions: elm.questions.filter(
+              (question) => question.category === "reviewable"
+            ),
+          };
+        })
+        .filter((elm) => elm.questions.length !== 0);
 
       let totalQuestions = 0;
       reviewableMCQs.map((elm) => (totalQuestions += elm.questions.length));
@@ -92,17 +92,16 @@ function App() {
       console.log("Hi from below");
     }
     if (dropdownValue === "Unattempted") {
-      let unattemptedMCQs = mcqArray.map((elm) => {
-        return {
-          ...elm,
-          questions: elm.questions.filter(
-            (question) => question.category === "unattempted"
-          ),
-        };
-      });
-      unattemptedMCQs = unattemptedMCQs.filter(
-        (elm) => elm.questions.length !== 0
-      );
+      let unattemptedMCQs = mcqArray
+        .map((elm) => {
+          return {
+            ...elm,
+            questions: elm.questions.filter(
+              (question) => question.category === "unattempted"
+            ),
+          };
+        })
+        .filter((elm) => elm.questions.length !== 0);
       let totalQuestions = 0;
       unattemptedMCQs.map((elm) => (totalQuestions += elm.questions.length));
 
