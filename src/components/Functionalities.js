@@ -91,21 +91,6 @@ const Functionalities = ({ setDropdownValue, dropdownValue, outOf }) => {
       setReviewEnabled(false);
       // setOptionChecked(false);
     }
-
-    // if (questionNumber === currentSubjectMCQsLength - 1) {
-    //   //AT LAST QUESTION AND SUBJECT, HITTING NEXT SHOULD SEND YOU TO 'ALL'.
-    //   if (dropdownValue !== "All" && subjectNumber === numberOfSubjects - 1) {
-    //     setDropdownValue("All");
-    //     return;
-    //   }
-    //   setSubjectNumber((num) => (num >= numberOfSubjects ? 0 : num + 1)); //Reset for last subject, otherwise increment normally
-    //   setQuestionNumber(0);
-    //   return;
-    // }
-    // setQuestionNumber((num) => num + 1);
-    // setSaveEnabled(false);
-    // setReviewEnabled(false);
-    // setOptionChecked(false);
   };
 
   const prevHandler = (e) => {

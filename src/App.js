@@ -20,7 +20,7 @@ function App() {
   const [allMCQs, setAllMCQs] = useState(mcqBank);
   // const [otherMCQs, setOtherMCQs] = useState();
   const [mcqArray, setMcqArray] = useState(mcqBank);
-
+  const [totalSawalat, setTotalSawalaat] = useState();
   const subjectAndQuestionContextObject = {
     subjectNumber,
     setSubjectNumber,
@@ -40,7 +40,7 @@ function App() {
   useEffect(() => {
     console.log(dropdownValue);
     if (dropdownValue === "Attempted") {
-      const attemptedMCQs = mcqArray.map((elm) => {
+      let attemptedMCQs = mcqArray.map((elm) => {
         return {
           ...elm,
           questions: elm.questions.filter(
@@ -48,6 +48,8 @@ function App() {
           ),
         };
       });
+      attemptedMCQs = attemptedMCQs.filter((elm) => elm.questions.length !== 0);
+
       let totalQuestions = 0;
       attemptedMCQs.map((elm) => (totalQuestions += elm.questions.length));
       // console.log(totalQuestions);
@@ -71,6 +73,10 @@ function App() {
           ),
         };
       });
+      reviewableMCQs = reviewableMCQs.filter(
+        (elm) => elm.questions.length !== 0
+      );
+
       let totalQuestions = 0;
       reviewableMCQs.map((elm) => (totalQuestions += elm.questions.length));
       console.log(totalQuestions);
@@ -81,11 +87,12 @@ function App() {
       setMcqArray(reviewableMCQs);
       setOutOf(totalQuestions);
       setSubjectNumber(0);
+      setQuestionNumber(0);
       setOtherQuestionNumber(1);
       console.log("Hi from below");
     }
     if (dropdownValue === "Unattempted") {
-      const unattemptedMCQs = mcqArray.map((elm) => {
+      let unattemptedMCQs = mcqArray.map((elm) => {
         return {
           ...elm,
           questions: elm.questions.filter(
@@ -93,8 +100,12 @@ function App() {
           ),
         };
       });
+      unattemptedMCQs = unattemptedMCQs.filter(
+        (elm) => elm.questions.length !== 0
+      );
       let totalQuestions = 0;
       unattemptedMCQs.map((elm) => (totalQuestions += elm.questions.length));
+
       // console.log(totalQuestions);
       if (totalQuestions === 0) {
         setDropdownValue("All");
@@ -103,6 +114,7 @@ function App() {
       setMcqArray(unattemptedMCQs);
       setOutOf(totalQuestions);
       setSubjectNumber(0);
+      setQuestionNumber(0);
       setOtherQuestionNumber(1);
       // console.log("Hi from below");
     }
@@ -111,7 +123,8 @@ function App() {
       setQuestionNumber(0);
       setMcqArray(allMCQs);
     }
-  }, [dropdownValue]);
+  }, [dropdownValue]); ////
+  // setTotalSawalaat(totalQuestions);
   // console.log(mcqArray);
   return (
     <>
