@@ -1,12 +1,24 @@
-import React, { useContext } from "react";
-import { subjectAndQuestionContext, mcqContext } from "../context";
+import React, { useContext, useEffect } from "react";
+import { subjectAndQuestionContext, mcqContext, saveContext } from "../context";
 import Option from "./Option";
 
 const OptionsSection = () => {
   const { subjectNumber, questionNumber } = useContext(
     subjectAndQuestionContext
   );
+  const { setSaveEnabled } = useContext(saveContext);
   const { mcqArray, setMcqArray } = useContext(mcqContext);
+  const selectedOption =
+    mcqArray[subjectNumber].questions[questionNumber].selectedOption;
+  useEffect(() => {
+    const currentQuesionCategory =
+      mcqArray[subjectNumber].questions[questionNumber].category;
+    setSaveEnabled(() =>
+      currentQuesionCategory === "unattempted" && selectedOption !== ""
+        ? true
+        : false
+    );
+  }, [subjectNumber, questionNumber]);
 
   const updateSelectedOption = (option) => {
     setMcqArray((prevState) => {
@@ -19,8 +31,7 @@ const OptionsSection = () => {
   const updateKaro = (newSelectedOption) => {
     updateSelectedOption(newSelectedOption);
   };
-  const selectedOption =
-    mcqArray[subjectNumber].questions[questionNumber].selectedOption;
+
   return (
     <section id="options-section">
       {mcqArray[subjectNumber].questions[questionNumber].options.map((elm) => (

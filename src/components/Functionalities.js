@@ -38,18 +38,14 @@ const Functionalities = ({ setDropdownValue, dropdownValue, outOf }) => {
   const { saveEnabled, setSaveEnabled } = useContext(saveContext);
   //Important constants.
   const currentSubjectMCQsLength = mcqArray[subjectNumber].questions.length;
-  // console.log(currentSubjectMCQsLength);
   const numberOfSubjects = mcqArray.length;
-  if (currentSubjectMCQsLength === 0) {
-    setDropdownValue("All");
-  }
+
   //UseEffect
   useEffect(() => {
     setPreviousEnabled(
       subjectNumber === 0 && questionNumber === 0 ? false : true
     );
-
-    setNextEnabled((prevState) => {
+    setNextEnabled(() => {
       if (dropdownValue !== "All") {
         return true;
       } else {
@@ -59,13 +55,14 @@ const Functionalities = ({ setDropdownValue, dropdownValue, outOf }) => {
           : true;
       }
     });
+
     setNextSectionEnabled(
       subjectNumber === numberOfSubjects - 1 ? false : true
     );
     setPreviousSectionEnabled(subjectNumber === 0 ? false : true);
   }, [subjectNumber, questionNumber]);
-  // Handler functions.
 
+  // Handler functions.
   const nextHandler = (e) => {
     if (dropdownValue !== "All") {
       if (otherQuestionNumber >= outOf) {
@@ -89,7 +86,6 @@ const Functionalities = ({ setDropdownValue, dropdownValue, outOf }) => {
       setQuestionNumber((num) => num + 1);
       setSaveEnabled(false);
       setReviewEnabled(false);
-      // setOptionChecked(false);
     }
   };
 
@@ -162,17 +158,6 @@ const Functionalities = ({ setDropdownValue, dropdownValue, outOf }) => {
     setDropdownValue(event.target.value);
     console.log("change");
   };
-  // if (dropdownValue === "Attempted") {
-  //   const attemptedMCQs = mcqArray.map((elm) => {
-  //     return {
-  //       ...elm,
-  //       questions: elm.questions.filter(
-  //         (question) => question.category === "attempted"
-  //       ),
-  //     };
-  //   });
-  //   onAttempted(attemptedMCQs);
-  // }
 
   return (
     <section id="final-section">
