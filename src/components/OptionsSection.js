@@ -13,6 +13,7 @@ const OptionsSection = () => {
   useEffect(() => {
     const currentQuesionCategory =
       mcqArray[subjectNumber].questions[questionNumber].category;
+    console.log(currentQuesionCategory);
     setSaveEnabled(() => {
       if (currentQuesionCategory === "unattempted" && selectedOption !== "") {
         return true;

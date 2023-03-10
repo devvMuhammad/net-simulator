@@ -72,8 +72,8 @@ const Functionalities = ({ setDropdownValue, dropdownValue, outOf }) => {
         return subjectNumber === 0 ? false : true;
       }
     });
-    setReviewEnabled(dropdownValue === "Reviewable" && false);
-    setSaveEnabled(dropdownValue === "Attempted" && false);
+    console.log(dropdownValue);
+    setSaveEnabled(dropdownValue === "Attempted" ? false : true);
   }, [subjectNumber, questionNumber, dropdownValue]);
 
   // Handler functions.
@@ -100,7 +100,7 @@ const Functionalities = ({ setDropdownValue, dropdownValue, outOf }) => {
         return;
       }
       setQuestionNumber((num) => num + 1);
-      setSaveEnabled(false);
+      // setSaveEnabled(false);
     }
     setReviewEnabled(false);
   };
@@ -134,7 +134,7 @@ const Functionalities = ({ setDropdownValue, dropdownValue, outOf }) => {
   const saveHandler = () => {
     console.log("Hi dear!");
     attemptMCQ();
-    setReviewEnabled(true);
+    setReviewEnabled(dropdownValue === "Reviewable" ? false : true);
     setSaveEnabled(false);
   };
 
