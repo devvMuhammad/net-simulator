@@ -36,7 +36,7 @@ const Functionalities = ({ setDropdownValue, dropdownValue, outOf }) => {
     setOtherQuestionNumber,
   } = useContext(subjectAndQuestionContext);
   const { mcqArray, setMcqArray } = useContext(mcqContext);
-  const { saveEnabled, setSaveEnabled } = useContext(saveContext);
+  const { saveEnabled, setSaveEnabled } = useContext(saveContext); // saveState enabled in optionsSection
   //Important constants.
   const currentSubjectMCQsLength = mcqArray[subjectNumber].questions.length;
   const numberOfSubjects = mcqArray.length;
@@ -72,8 +72,6 @@ const Functionalities = ({ setDropdownValue, dropdownValue, outOf }) => {
         return subjectNumber === 0 ? false : true;
       }
     });
-    console.log(dropdownValue);
-    setSaveEnabled(dropdownValue === "Attempted" ? false : true);
   }, [subjectNumber, questionNumber, dropdownValue]);
 
   // Handler functions.
@@ -100,7 +98,6 @@ const Functionalities = ({ setDropdownValue, dropdownValue, outOf }) => {
         return;
       }
       setQuestionNumber((num) => num + 1);
-      // setSaveEnabled(false);
     }
     setReviewEnabled(false);
   };
@@ -140,7 +137,7 @@ const Functionalities = ({ setDropdownValue, dropdownValue, outOf }) => {
       return;
     }
     setReviewEnabled(dropdownValue === "Reviewable" ? false : true);
-    // setSaveEnabled(false);
+    setSaveEnabled(false);
   };
 
   const reviewHandler = () => {
