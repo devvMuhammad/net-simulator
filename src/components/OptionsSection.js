@@ -13,11 +13,15 @@ const OptionsSection = () => {
   useEffect(() => {
     const currentQuesionCategory =
       mcqArray[subjectNumber].questions[questionNumber].category;
-    setSaveEnabled(() =>
-      currentQuesionCategory === "unattempted" && selectedOption !== ""
-        ? true
-        : false
-    );
+    setSaveEnabled(() => {
+      if (currentQuesionCategory === "unattempted" && selectedOption !== "") {
+        return true;
+      } else if (currentQuesionCategory === "reviewable") {
+        return true;
+      } else {
+        return false;
+      }
+    });
   }, [subjectNumber, questionNumber]);
 
   const updateSelectedOption = (option) => {

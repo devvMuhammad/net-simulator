@@ -25,6 +25,7 @@ const Functionalities = ({ setDropdownValue, dropdownValue, outOf }) => {
   const [previousEnabled, setPreviousEnabled] = useState(false);
   const [previousSectionEnabled, setPreviousSectionEnabled] = useState(false);
   const [reviewEnabled, setReviewEnabled] = useState(false);
+  const [allDropdownValue, setAllDropdownValue] = useState();
   //Context
   const {
     questionNumber,
@@ -47,6 +48,7 @@ const Functionalities = ({ setDropdownValue, dropdownValue, outOf }) => {
     );
     setNextEnabled(() => {
       if (dropdownValue !== "All") {
+        //Next button should never be disabled for 'unattem','reviewable' and 'attemepted'
         return true;
       } else {
         return subjectNumber === numberOfSubjects - 1 &&
@@ -56,20 +58,34 @@ const Functionalities = ({ setDropdownValue, dropdownValue, outOf }) => {
       }
     });
 
-    setNextSectionEnabled(
-      subjectNumber === numberOfSubjects - 1 ? false : true
-    );
-    setPreviousSectionEnabled(subjectNumber === 0 ? false : true);
-  }, [subjectNumber, questionNumber]);
+    setNextSectionEnabled(() => {
+      if (dropdownValue !== "All") {
+        return false;
+      } else {
+        return subjectNumber === numberOfSubjects - 1 ? false : true;
+      }
+    });
+    setPreviousSectionEnabled(() => {
+      if (dropdownValue !== "All") {
+        return false;
+      } else {
+        return subjectNumber === 0 ? false : true;
+      }
+    });
+    setReviewEnabled(dropdownValue === "Reviewable" && false);
+    setSaveEnabled(dropdownValue === "Attempted" && false);
+  }, [subjectNumber, questionNumber, dropdownValue]);
 
   // Handler functions.
-  const nextHandler = (e) => {
+  const nextHandler = () => {
     if (dropdownValue !== "All") {
       if (otherQuestionNumber >= outOf) {
+        //Hitting next at last question should send you to 'all'.
         setDropdownValue("All");
         return;
       }
       setOtherQuestionNumber((num) => num + 1);
+
       if (questionNumber === currentSubjectMCQsLength - 1) {
         setSubjectNumber((num) => (num >= numberOfSubjects ? 0 : num + 1)); //Reset for last subject, otherwise increment normally
         setQuestionNumber(0);
@@ -85,35 +101,49 @@ const Functionalities = ({ setDropdownValue, dropdownValue, outOf }) => {
       }
       setQuestionNumber((num) => num + 1);
       setSaveEnabled(false);
-      setReviewEnabled(false);
+    }
+    setReviewEnabled(false);
+  };
+
+  const prevHandler = () => {
+    if (dropdownValue !== "All") {
+      setOtherQuestionNumber((num) => num - 1); // it has to decrement, no matter what.
+
+      if (questionNumber === 0) {
+        //At first question, the prev button should send you to the previous secion.
+        setSubjectNumber((num) => (num <= 0 ? 0 : num - 1));
+        subjectNumber === 0
+          ? setQuestionNumber(0) //For maths, don't go more back. Otherwise, go back one subject.
+          : setQuestionNumber(currentSubjectMCQsLength - 1);
+        return;
+      }
+      setQuestionNumber((num) => num - 1);
+    } else {
+      if (questionNumber === 0) {
+        //At first question, the prev button should send you to the previous secion.
+        setSubjectNumber((num) => (num <= 0 ? 0 : num - 1));
+        subjectNumber === 0
+          ? setQuestionNumber(0) //For maths, don't go more back. Otherwise, go back one subject.
+          : setQuestionNumber(currentSubjectMCQsLength - 1);
+        return;
+      }
+      setQuestionNumber((num) => num - 1);
     }
   };
 
-  const prevHandler = (e) => {
-    //At first question, the prev button should send you to the previous secion.
-    if (questionNumber === 0) {
-      setSubjectNumber((num) => (num <= 0 ? 0 : num - 1));
-      subjectNumber === 0
-        ? setQuestionNumber(0) //For maths, don't go more back. Otherwise, go back one subject.
-        : setQuestionNumber(currentSubjectMCQsLength - 1);
-      return;
-    }
-    setQuestionNumber((num) => num - 1);
-  };
-
-  const saveHandler = (e) => {
+  const saveHandler = () => {
     console.log("Hi dear!");
     attemptMCQ();
     setReviewEnabled(true);
     setSaveEnabled(false);
   };
 
-  const reviewHandler = (e) => {
+  const reviewHandler = () => {
     reviewMCQ();
     setReviewEnabled(false);
   };
 
-  const nextSectionHandler = (e) => {
+  const nextSectionHandler = () => {
     if (subjectNumber === numberOfSubjects - 1) {
       setSubjectNumber(0); //return to first section.
       return;
@@ -122,7 +152,7 @@ const Functionalities = ({ setDropdownValue, dropdownValue, outOf }) => {
     setQuestionNumber(0);
   };
 
-  const previousSectionHandler = (e) => {
+  const previousSectionHandler = () => {
     if (subjectNumber === 0) {
       //Disable the button.
       return;
@@ -131,12 +161,18 @@ const Functionalities = ({ setDropdownValue, dropdownValue, outOf }) => {
     setQuestionNumber(0);
   };
 
-  const firstHandler = (e) => {
+  const firstHandler = () => {
+    if (dropdownValue !== "All") {
+      setOtherQuestionNumber(1);
+    }
     setSubjectNumber(0);
     setQuestionNumber(0);
   };
 
-  const lastHandler = (e) => {
+  const lastHandler = () => {
+    if (dropdownValue !== "All") {
+      setOtherQuestionNumber(outOf);
+    }
     setSubjectNumber(numberOfSubjects - 1);
     setQuestionNumber(currentSubjectMCQsLength - 1);
   };
@@ -156,13 +192,25 @@ const Functionalities = ({ setDropdownValue, dropdownValue, outOf }) => {
 
   const dropdownChangeHandler = (event) => {
     setDropdownValue(event.target.value);
-    console.log("change");
   };
 
+  const allDropdownChangeHandler = (event) => {
+    setAllDropdownValue(event.target.value);
+  };
   return (
     <section id="final-section">
       <div className="functionalities">
         <div className="dropdown-container">
+          <select
+            name="status"
+            className="dropdown allDropdown"
+            onChange={allDropdownChangeHandler}
+            value={allDropdownValue}
+          >
+            {[...Array(outOf)].map((_, index) => (
+              <option key={index}>{index + 1}</option>
+            ))}
+          </select>
           <select
             name="status"
             className="dropdown"

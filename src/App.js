@@ -20,6 +20,10 @@ function App() {
   const [allMCQs, setAllMCQs] = useState(mcqBank);
   // const [otherMCQs, setOtherMCQs] = useState();
   const [mcqArray, setMcqArray] = useState(mcqBank);
+  const allMCQsNumber = mcqBank.reduce(
+    (acc, elm) => acc + elm.questions.length,
+    0
+  );
   const subjectAndQuestionContextObject = {
     subjectNumber,
     setSubjectNumber,
@@ -119,11 +123,11 @@ function App() {
     if (dropdownValue === "All") {
       setSubjectNumber(0);
       setQuestionNumber(0);
+      setOutOf(allMCQsNumber);
       setMcqArray(allMCQs);
     }
   }, [dropdownValue]); ////
-  // setTotalSawalaat(totalQuestions);
-  // console.log(mcqArray);
+
   return (
     <>
       <mcqContext.Provider value={mcqContextObject}>
