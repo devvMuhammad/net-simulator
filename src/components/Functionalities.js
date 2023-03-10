@@ -134,8 +134,13 @@ const Functionalities = ({ setDropdownValue, dropdownValue, outOf }) => {
   const saveHandler = () => {
     console.log("Hi dear!");
     attemptMCQ();
+    if (dropdownValue === "Reviewable") {
+      setReviewEnabled(false);
+      nextHandler();
+      return;
+    }
     setReviewEnabled(dropdownValue === "Reviewable" ? false : true);
-    setSaveEnabled(false);
+    // setSaveEnabled(false);
   };
 
   const reviewHandler = () => {
