@@ -1,4 +1,5 @@
 /* eslint-disable no-unused-vars */
+/* eslint-disable react-hooks/exhaustive-deps */
 import { useState, useEffect } from "react";
 import "./App.css";
 import { subjectAndQuestionContext, mcqContext, saveContext } from "./context";
@@ -40,8 +41,12 @@ function App() {
     saveEnabled,
     setSaveEnabled,
   };
+  // const dropdownContextObject = {
+  //   dropdownValue,
+  //   setDropdownValue
+  // }
   useEffect(() => {
-    console.log(dropdownValue);
+    // console.log(dropdownValue);
     if (dropdownValue === "Attempted") {
       let attemptedMCQs = mcqArray
         .map((elm) => {
@@ -138,7 +143,7 @@ function App() {
           <FirstSection dropdownValue={dropdownValue} outOf={outOf} />
           <SecondSection />
           <saveContext.Provider value={saveContextObject}>
-            <OptionsSection />
+            <OptionsSection dropdownValue={dropdownValue} />
             <Functionalities
               setDropdownValue={setDropdownValue}
               dropdownValue={dropdownValue}

@@ -1,6 +1,6 @@
 /* eslint-disable react-hooks/exhaustive-deps */
 /* eslint-disable no-unused-vars */
-import React, { useContext, useEffect, useState } from "react";
+import React, { useContext, useEffect, useRef, useState } from "react";
 import { mcqContext, saveContext, subjectAndQuestionContext } from "../context";
 import saveButton from "../images/Save.png";
 import saveButtonDisabled from "../images/DisabledSave.png";
@@ -17,6 +17,7 @@ import previousSectionButton from "../images/PreviousSection.png";
 import previousSectionDisabled from "../images/PreviousSectionDisabled.png";
 import reviewButton from "../images/Review.png";
 import reviewButtonDisabled from "../images/DisabledReview.png";
+import _ from "lodash";
 
 const Functionalities = ({ setDropdownValue, dropdownValue, outOf }) => {
   //States
@@ -38,25 +39,14 @@ const Functionalities = ({ setDropdownValue, dropdownValue, outOf }) => {
   const { mcqArray, setMcqArray } = useContext(mcqContext);
   const { saveEnabled, setSaveEnabled } = useContext(saveContext); // saveState enabled in optionsSection
   //Important constants.
-  const currentSubjectMCQsLength = mcqArray[subjectNumber].questions.length;
-  const numberOfSubjects = mcqArray.length;
-
+  let currentSubjectMCQsLength = mcqArray[subjectNumber].questions.length;
+  let numberOfSubjects = mcqArray.length;
+  const subjectMCQs = mcqArray.map((elm) => elm.questions.length);
   //UseEffect
   useEffect(() => {
     setPreviousEnabled(
       subjectNumber === 0 && questionNumber === 0 ? false : true
     );
-    setNextEnabled(() => {
-      if (dropdownValue !== "All") {
-        //Next button should never be disabled for 'unattem','reviewable' and 'attemepted'
-        return true;
-      } else {
-        return subjectNumber === numberOfSubjects - 1 &&
-          questionNumber === currentSubjectMCQsLength - 1
-          ? false
-          : true;
-      }
-    });
 
     setNextSectionEnabled(() => {
       if (dropdownValue !== "All") {
@@ -72,8 +62,22 @@ const Functionalities = ({ setDropdownValue, dropdownValue, outOf }) => {
         return subjectNumber === 0 ? false : true;
       }
     });
+    setReviewEnabled(false);
   }, [subjectNumber, questionNumber, dropdownValue]);
 
+  useEffect(() => {
+    setNextEnabled(() => {
+      if (dropdownValue !== "All") {
+        //Next button should never be disabled for 'unattem','reviewable' and 'attemepted'
+        return true;
+      } else {
+        return subjectNumber === numberOfSubjects - 1 &&
+          questionNumber === currentSubjectMCQsLength - 1
+          ? false
+          : true;
+      }
+    });
+  }, [subjectNumber, questionNumber, dropdownValue, mcqArray]);
   // Handler functions.
   const nextHandler = () => {
     if (dropdownValue !== "All") {
@@ -83,49 +87,27 @@ const Functionalities = ({ setDropdownValue, dropdownValue, outOf }) => {
         return;
       }
       setOtherQuestionNumber((num) => num + 1);
-
-      if (questionNumber === currentSubjectMCQsLength - 1) {
-        setSubjectNumber((num) => (num >= numberOfSubjects ? 0 : num + 1)); //Reset for last subject, otherwise increment normally
-        setQuestionNumber(0);
-        return;
-      }
-      setQuestionNumber((num) => num + 1);
-      console.log(subjectNumber);
-    } else {
-      if (questionNumber === currentSubjectMCQsLength - 1) {
-        setSubjectNumber((num) => (num >= numberOfSubjects ? 0 : num + 1)); //Reset for last subject, otherwise increment normally
-        setQuestionNumber(0);
-        return;
-      }
-      setQuestionNumber((num) => num + 1);
     }
-    setReviewEnabled(false);
+    if (questionNumber === currentSubjectMCQsLength - 1) {
+      setSubjectNumber((num) => (num >= numberOfSubjects ? 0 : num + 1)); //Reset for last subject, otherwise increment normally
+      setQuestionNumber(0);
+      return;
+    }
+    setQuestionNumber((num) => num + 1);
   };
-
   const prevHandler = () => {
     if (dropdownValue !== "All") {
       setOtherQuestionNumber((num) => num - 1); // it has to decrement, no matter what.
-
-      if (questionNumber === 0) {
-        //At first question, the prev button should send you to the previous secion.
-        setSubjectNumber((num) => (num <= 0 ? 0 : num - 1));
-        subjectNumber === 0
-          ? setQuestionNumber(0) //For maths, don't go more back. Otherwise, go back one subject.
-          : setQuestionNumber(currentSubjectMCQsLength - 1);
-        return;
-      }
-      setQuestionNumber((num) => num - 1);
-    } else {
-      if (questionNumber === 0) {
-        //At first question, the prev button should send you to the previous secion.
-        setSubjectNumber((num) => (num <= 0 ? 0 : num - 1));
-        subjectNumber === 0
-          ? setQuestionNumber(0) //For maths, don't go more back. Otherwise, go back one subject.
-          : setQuestionNumber(currentSubjectMCQsLength - 1);
-        return;
-      }
-      setQuestionNumber((num) => num - 1);
     }
+    if (questionNumber === 0 && subjectNumber > 0) {
+      const previousSubjectMCQsLength =
+        mcqArray[subjectNumber - 1].questions.length;
+      //At first question, the prev button should send you to the previous secion.
+      setSubjectNumber((num) => (num <= 0 ? 0 : num - 1));
+      setQuestionNumber(previousSubjectMCQsLength - 1);
+      return;
+    }
+    setQuestionNumber((num) => num - 1);
   };
 
   const saveHandler = () => {
@@ -177,6 +159,7 @@ const Functionalities = ({ setDropdownValue, dropdownValue, outOf }) => {
     }
     setSubjectNumber(numberOfSubjects - 1);
     setQuestionNumber(currentSubjectMCQsLength - 1);
+    setAllDropdownValue(outOf);
   };
 
   const updateQuestionCategory = (category) => {
@@ -196,9 +179,52 @@ const Functionalities = ({ setDropdownValue, dropdownValue, outOf }) => {
     setDropdownValue(event.target.value);
   };
 
+  function convertDropdownToQuestionNumber(value, subjectMCQs) {
+    let cumulativeSum = 0;
+    const breakpointsArray = subjectMCQs.reduce((acc, curr, i) => {
+      cumulativeSum += curr;
+      acc.push(cumulativeSum);
+      return acc;
+    }, []);
+    if (value <= breakpointsArray[0]) {
+      return [value, 0];
+    }
+    let result;
+    if (
+      value > breakpointsArray[breakpointsArray.length - 2] &&
+      value <= breakpointsArray[breakpointsArray.length - 1]
+    ) {
+      result = value - breakpointsArray[breakpointsArray.length - 2];
+      return [result, breakpointsArray.length - 1];
+    }
+    let iteration;
+    breakpointsArray.forEach((elm, i) => {
+      if (value > breakpointsArray[i] && value <= breakpointsArray[i + 1]) {
+        iteration = i + 1;
+        result = value - breakpointsArray[i];
+      }
+    });
+    return [result, iteration];
+  }
+
+  useEffect(() => {
+    setAllDropdownValue(1);
+  }, [dropdownValue]);
+
+  useEffect(() => {
+    const [properQuestionNumber, iteration] = convertDropdownToQuestionNumber(
+      allDropdownValue,
+      subjectMCQs
+    );
+    if (dropdownValue !== "All") setOtherQuestionNumber(allDropdownValue);
+    setQuestionNumber(properQuestionNumber - 1);
+    setSubjectNumber(iteration);
+  }, [allDropdownValue, dropdownValue]);
+
   const allDropdownChangeHandler = (event) => {
     setAllDropdownValue(event.target.value);
   };
+
   return (
     <section id="final-section">
       <div className="functionalities">

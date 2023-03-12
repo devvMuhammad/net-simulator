@@ -18,3 +18,8 @@ export const saveContext = createContext({
   saveEnabled: false,
   setSaveEnabled: () => {},
 });
+
+export const dropdownContext = createContext({
+  dropdownValue: 0,
+  setDropdownValue: () => {},
+});

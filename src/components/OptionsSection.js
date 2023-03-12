@@ -1,8 +1,9 @@
+/* eslint-disable react-hooks/exhaustive-deps */
 import React, { useContext, useEffect } from "react";
 import { subjectAndQuestionContext, mcqContext, saveContext } from "../context";
 import Option from "./Option";
 
-const OptionsSection = () => {
+const OptionsSection = ({ dropdownValue }) => {
   const { subjectNumber, questionNumber } = useContext(
     subjectAndQuestionContext
   );
@@ -13,7 +14,7 @@ const OptionsSection = () => {
   useEffect(() => {
     const currentQuesionCategory =
       mcqArray[subjectNumber].questions[questionNumber].category;
-    console.log(currentQuesionCategory);
+    // console.log(currentQuesionCategory);
     setSaveEnabled(() => {
       if (currentQuesionCategory === "unattempted" && selectedOption !== "") {
         return true;
@@ -23,7 +24,7 @@ const OptionsSection = () => {
         return false;
       }
     });
-  }, [subjectNumber, questionNumber]);
+  }, [subjectNumber, questionNumber, dropdownValue]);
 
   const updateSelectedOption = (option) => {
     setMcqArray((prevState) => {
