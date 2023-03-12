@@ -17,7 +17,6 @@ import previousSectionButton from "../images/PreviousSection.png";
 import previousSectionDisabled from "../images/PreviousSectionDisabled.png";
 import reviewButton from "../images/Review.png";
 import reviewButtonDisabled from "../images/DisabledReview.png";
-import _ from "lodash";
 
 const Functionalities = ({ setDropdownValue, dropdownValue, outOf }) => {
   //States
@@ -111,7 +110,6 @@ const Functionalities = ({ setDropdownValue, dropdownValue, outOf }) => {
   };
 
   const saveHandler = () => {
-    console.log("Hi dear!");
     attemptMCQ();
     if (dropdownValue === "Reviewable") {
       setReviewEnabled(false);
