@@ -26,6 +26,7 @@ const Functionalities = ({ setDropdownValue, dropdownValue, outOf }) => {
   const [previousSectionEnabled, setPreviousSectionEnabled] = useState(false);
   const [reviewEnabled, setReviewEnabled] = useState(false);
   const [allDropdownValue, setAllDropdownValue] = useState();
+  const [score, setScore] = useState();
   //Context
   const {
     questionNumber,
@@ -205,6 +206,26 @@ const Functionalities = ({ setDropdownValue, dropdownValue, outOf }) => {
     return [result, iteration];
   }
 
+  const calculateScore = () => {
+    let score = 0;
+    let subjectScoresArray = [];
+    mcqArray.forEach((subject) => {
+      let subjectScore = 0;
+      subject.questions.forEach((mcq) => {
+        if (
+          mcq.answer === mcq.selectedOption &&
+          mcq.category !== "unattempted"
+        ) {
+          score++;
+          subjectScore++;
+        }
+      });
+      subjectScoresArray.push(subjectScore);
+    });
+    setScore(score);
+    console.log(subjectScoresArray);
+  };
+
   useEffect(() => {
     setAllDropdownValue(1);
   }, [dropdownValue]);
@@ -318,9 +339,10 @@ const Functionalities = ({ setDropdownValue, dropdownValue, outOf }) => {
         </div>
       </div>
       <div className="finish-test">
-        <p className="finishing-paragraph">
+        <p className="finishing-paragraph" onClick={calculateScore}>
           Click here to <span>FINISH</span> your test!
         </p>
+        <span>{score}</span>
       </div>
     </section>
   );

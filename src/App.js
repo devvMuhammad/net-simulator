@@ -24,7 +24,7 @@ function App() {
   const allMCQsNumber = useMemo(() => {
     return mcqBank.reduce((acc, elm) => acc + elm.questions.length, 0);
   }, [mcqBank]);
-  
+
   const subjectAndQuestionContextObject = {
     subjectNumber,
     setSubjectNumber,
@@ -41,19 +41,18 @@ function App() {
     saveEnabled,
     setSaveEnabled,
   };
-  
+
   function filterMcqArray(category) {
-    let filteredMCQs = mcqArray
-      .map((elm) => {
-        return {
-          ...elm,
-          questions: elm.questions.filter(
-            (question) => question.category === category
-          ),
-        };
-      })
-      .filter((elm) => elm.questions.length !== 0);
-  
+    let filteredMCQs = mcqArray.reduce((acc, elm) => {
+      const filteredQuestions = elm.questions.filter(
+        (question) => question.category === category
+      );
+      if (filteredQuestions.length !== 0) {
+        acc.push({ ...elm, questions: filteredQuestions });
+      }
+      return acc;
+    }, []);
+
     let totalQuestions = 0;
     filteredMCQs.map((elm) => (totalQuestions += elm.questions.length));
     if (totalQuestions === 0) {
@@ -69,8 +68,8 @@ function App() {
 
   useEffect(() => {
     if (dropdownValue === "Attempted") filterMcqArray("attempted");
-    if (dropdownValue === "Reviewable") filterMcqArray('reviewable');
-    if (dropdownValue === "Unattempted") filterMcqArray('unattempted');
+    if (dropdownValue === "Reviewable") filterMcqArray("reviewable");
+    if (dropdownValue === "Unattempted") filterMcqArray("unattempted");
     if (dropdownValue === "All") {
       setSubjectNumber(0);
       setQuestionNumber(0);

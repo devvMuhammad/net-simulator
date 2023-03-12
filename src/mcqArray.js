@@ -7,7 +7,6 @@ const mcqArray = [
         options: ["2x", "10x", "0", "None of these"],
         answer: "2x",
         category: "unattempted",
-        answerState: false,
         selectedOption: "",
       },
       {
@@ -15,7 +14,6 @@ const mcqArray = [
         options: ["3.14", "22/7", "4", "None of these"],
         answer: "3.14",
         category: "unattempted",
-        answerState: false,
         selectedOption: "",
       },
       {
@@ -23,7 +21,6 @@ const mcqArray = [
         options: ["0", "1", "infinity", "None of these"],
         answer: "0",
         category: "unattempted",
-        answerState: false,
         selectedOption: "",
       },
       {
@@ -31,7 +28,6 @@ const mcqArray = [
         options: ["4", "8", "16", "None of these"],
         answer: "8",
         category: "unattempted",
-        answerState: false,
         selectedOption: "",
       },
       {
@@ -39,7 +35,6 @@ const mcqArray = [
         options: ["90 degrees", "180 degrees", "360 degrees", "None of these"],
         answer: "180 degrees",
         category: "unattempted",
-        answerState: false,
         selectedOption: "",
       },
     ],
@@ -52,7 +47,6 @@ const mcqArray = [
         options: ["F = ma", "F = mgh", "F = kx", "None of these"],
         answer: "F = ma",
         category: "unattempted",
-        answerState: false,
         selectedOption: "",
       },
       {
@@ -60,7 +54,6 @@ const mcqArray = [
         options: ["Newtons", "Joules", "Watts", "None of these"],
         answer: "Newtons",
         category: "unattempted",
-        answerState: false,
         selectedOption: "",
       },
       {
@@ -73,7 +66,6 @@ const mcqArray = [
         ],
         answer: "299,792,458 m/s",
         category: "unattempted",
-        answerState: false,
         selectedOption: "",
       },
       {
@@ -81,7 +73,6 @@ const mcqArray = [
         options: ["KE = 0.5mv^2", "KE = mgh", "KE = Fd", "None of these"],
         answer: "KE = 0.5mv^2",
         category: "unattempted",
-        answerState: false,
         selectedOption: "",
       },
       {
@@ -94,7 +85,6 @@ const mcqArray = [
         ],
         answer: "Energy cannot be created or destroyed",
         category: "unattempted",
-        answerState: false,
         selectedOption: "",
       },
     ],
@@ -107,7 +97,6 @@ const mcqArray = [
         options: ["Au", "Ag", "Cu", "None of these"],
         answer: "Au",
         category: "unattempted",
-        answerState: false,
         selectedOption: "",
       },
       {
@@ -115,7 +104,6 @@ const mcqArray = [
         options: ["H2O", "CO2", "NaCl", "None of these"],
         answer: "H2O",
         category: "unattempted",
-        answerState: false,
         selectedOption: "",
       },
       {
@@ -123,7 +111,6 @@ const mcqArray = [
         options: ["6.022 x 10^23", "3.14159", "9.81", "None of these"],
         answer: "6.022 x 10^23",
         category: "unattempted",
-        answerState: false,
         selectedOption: "",
       },
       {
@@ -131,7 +118,6 @@ const mcqArray = [
         options: ["7", "0", "14", "None of these"],
         answer: "7",
         category: "unattempted",
-        answerState: false,
         selectedOption: "",
       },
       {
@@ -139,7 +125,6 @@ const mcqArray = [
         options: ["Nitrogen", "Oxygen", "Carbon dioxide", "None of these"],
         answer: "Nitrogen",
         category: "unattempted",
-        answerState: false,
         selectedOption: "",
       },
     ],

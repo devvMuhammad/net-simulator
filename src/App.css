@@ -164,9 +164,13 @@ header {
 .finishing-paragraph {
   font-family: Trebuchet MS;
   color: blue;
-  text-decoration: underline;
   display: inline-block;
   margin: 0;
+  text-decoration: underline;
+}
+.finishing-paragraph:hover {
+  transform: translateY(-2px);
+  cursor: pointer;
 }
 .finishing-paragraph span {
   font-weight: bold;
