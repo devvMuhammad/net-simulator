@@ -19,7 +19,17 @@ const App = () => {
     <>
       <testContext.Provider value={testContextObject}>
         {!testFinished && <Test mcqBank={mcqBank} />}
-        {testFinished && <h1>Dear, your score is {result}</h1>};
+        {testFinished && (
+          <>
+            <h1>Dear, your score is {result}</h1>
+            <ul>
+              {subjectScores.map((elm) => (
+                <li key={elm.subject}>{`${elm.subject}:${elm.score}`}</li>
+              ))}
+            </ul>
+          </>
+        )}
+        ;
       </testContext.Provider>
     </>
   );

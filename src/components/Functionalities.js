@@ -224,10 +224,15 @@ const Functionalities = ({ setDropdownValue, dropdownValue, outOf }) => {
           subjectScore++;
         }
       });
-      subjectScoresArray.push(subjectScore);
+      subjectScoresArray.push({
+        subject: subject.subject,
+        score: subjectScore,
+        total: subject.questions.length,
+      });
     });
     setResult(score);
     setSubjectScores(subjectScoresArray);
+    console.log(subjectScoresArray);
     setTestFinished(true);
   };
 
