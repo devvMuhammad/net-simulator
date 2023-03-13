@@ -1,8 +1,9 @@
+/*eslint-disable react-hooks/exhaustive-deps*/
 import React, { useState, useEffect } from "react";
 import "./Countdown.css";
 
 const Countdown = ({ finishTest }) => {
-  const [remainingTime, setRemainingTime] = useState(10);
+  const [remainingTime, setRemainingTime] = useState(120);
 
   useEffect(() => {
     const intervalId = setInterval(() => {
@@ -10,6 +11,7 @@ const Countdown = ({ finishTest }) => {
     }, 1000);
     if (remainingTime === 0) {
       finishTest();
+      clearInterval(intervalId);
     }
     return () => clearInterval(intervalId);
   }, [remainingTime]);
