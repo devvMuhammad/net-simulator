@@ -1,0 +1,19 @@
+.countdown-container {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  border: 2px solid black;
+}
+
+.countdown-box {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  margin: 0 3px;
+}
+
+.countdown-number,
+.countdown-separator {
+  font-size: 2rem;
+}

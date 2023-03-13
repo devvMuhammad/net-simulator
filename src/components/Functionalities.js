@@ -19,6 +19,7 @@ import reviewButton from "../images/Review.png";
 import reviewButtonDisabled from "../images/DisabledReview.png";
 import testContext from "../testContext";
 import ConfirmationOverlay from "./ConfirmationOverlay";
+import Countdown from "./Timer";
 
 const Functionalities = ({ setDropdownValue, dropdownValue, outOf }) => {
   //States
@@ -258,6 +259,7 @@ const Functionalities = ({ setDropdownValue, dropdownValue, outOf }) => {
     <section id="final-section">
       <div className="functionalities">
         <div className="dropdown-container">
+          <Countdown finishTest={calculateScore} />
           <select
             name="status"
             className="dropdown allDropdown"
