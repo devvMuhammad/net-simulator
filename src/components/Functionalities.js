@@ -17,6 +17,8 @@ import previousSectionButton from "../images/PreviousSection.png";
 import previousSectionDisabled from "../images/PreviousSectionDisabled.png";
 import reviewButton from "../images/Review.png";
 import reviewButtonDisabled from "../images/DisabledReview.png";
+import testContext from "../testContext";
+import ConfirmationOverlay from "./ConfirmationOverlay";
 
 const Functionalities = ({ setDropdownValue, dropdownValue, outOf }) => {
   //States
@@ -26,7 +28,7 @@ const Functionalities = ({ setDropdownValue, dropdownValue, outOf }) => {
   const [previousSectionEnabled, setPreviousSectionEnabled] = useState(false);
   const [reviewEnabled, setReviewEnabled] = useState(false);
   const [allDropdownValue, setAllDropdownValue] = useState();
-  const [score, setScore] = useState();
+  const [showOverlay, setShowOverlay] = useState(false);
   //Context
   const {
     questionNumber,
@@ -38,6 +40,8 @@ const Functionalities = ({ setDropdownValue, dropdownValue, outOf }) => {
   } = useContext(subjectAndQuestionContext);
   const { mcqArray, setMcqArray } = useContext(mcqContext);
   const { saveEnabled, setSaveEnabled } = useContext(saveContext); // saveState enabled in optionsSection
+  const { setResult, setTestFinished, setSubjectScores } =
+    useContext(testContext);
   //Important constants.
   let currentSubjectMCQsLength = mcqArray[subjectNumber].questions.length;
   let numberOfSubjects = mcqArray.length;
@@ -222,8 +226,9 @@ const Functionalities = ({ setDropdownValue, dropdownValue, outOf }) => {
       });
       subjectScoresArray.push(subjectScore);
     });
-    setScore(score);
-    console.log(subjectScoresArray);
+    setResult(score);
+    setSubjectScores(subjectScoresArray);
+    setTestFinished(true);
   };
 
   useEffect(() => {
@@ -339,10 +344,22 @@ const Functionalities = ({ setDropdownValue, dropdownValue, outOf }) => {
         </div>
       </div>
       <div className="finish-test">
-        <p className="finishing-paragraph" onClick={calculateScore}>
+        <p
+          className="finishing-paragraph"
+          onClick={() => {
+            setShowOverlay(true);
+          }}
+        >
           Click here to <span>FINISH</span> your test!
         </p>
-        <span>{score}</span>
+        {showOverlay && (
+          <ConfirmationOverlay
+            onCancel={() => {
+              setShowOverlay(false);
+            }}
+            onFinish={calculateScore}
+          />
+        )}
       </div>
     </section>
   );
