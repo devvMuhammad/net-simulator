@@ -10,7 +10,7 @@ const Header = () => {
     <header>
       <p className="subject">{mcqArray[subjectNumber].subject}</p>
       <p className="test-type">
-        Engineering/Computer Science/BS Mathematics (With Chemistry)
+        Enjineering/Computer Science/BS Mathematics (With Chemistry)
       </p>
       <p className="net-demo">
         <span className="studentID">STUDENTID</span>
