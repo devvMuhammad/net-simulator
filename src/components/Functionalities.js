@@ -67,8 +67,11 @@ const Functionalities = ({ setDropdownValue, dropdownValue, outOf }) => {
         return subjectNumber === 0 ? false : true;
       }
     });
-    setReviewEnabled(false);
   }, [subjectNumber, questionNumber, dropdownValue]);
+
+  useEffect(() => {
+    setReviewEnabled(dropdownValue === "reviewable" ? true : false);
+  }, [dropdownValue]);
 
   useEffect(() => {
     setNextEnabled(() => {
@@ -162,7 +165,7 @@ const Functionalities = ({ setDropdownValue, dropdownValue, outOf }) => {
       setOtherQuestionNumber(outOf);
     }
     setSubjectNumber(numberOfSubjects - 1);
-    setQuestionNumber(currentSubjectMCQsLength - 1);
+    setQuestionNumber(mcqArray[numberOfSubjects - 1].questions.length - 1);
     setAllDropdownValue(outOf);
   };
 

@@ -57,6 +57,13 @@ const mcqArray = [
         selectedOption: "",
       },
       {
+        question: "What is the SI unit of force?",
+        options: ["Newtons", "Joules", "Watts", "None of these"],
+        answer: "Newtons",
+        category: "unattempted",
+        selectedOption: "",
+      },
+      {
         question: "What is the speed of light in a vacuum?",
         options: [
           "299,792,458 m/s",
