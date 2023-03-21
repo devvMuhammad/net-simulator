@@ -88,6 +88,7 @@ const Functionalities = ({ setDropdownValue, dropdownValue, outOf }) => {
   }, [subjectNumber, questionNumber, dropdownValue, mcqArray]);
   // Handler functions.
   const nextHandler = () => {
+    setReviewEnabled(false);
     if (dropdownValue !== "All") {
       if (otherQuestionNumber >= outOf) {
         //Hitting next at last question should send you to 'all'.
@@ -166,7 +167,7 @@ const Functionalities = ({ setDropdownValue, dropdownValue, outOf }) => {
     }
     setSubjectNumber(numberOfSubjects - 1);
     setQuestionNumber(mcqArray[numberOfSubjects - 1].questions.length - 1);
-    setAllDropdownValue(outOf);
+    // setAllDropdownValue(outOf);
   };
 
   const updateQuestionCategory = (category) => {

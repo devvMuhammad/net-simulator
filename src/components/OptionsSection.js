@@ -18,13 +18,13 @@ const OptionsSection = ({ dropdownValue }) => {
     setSaveEnabled(() => {
       if (currentQuesionCategory === "unattempted" && selectedOption !== "") {
         return true;
-      } else if (currentQuesionCategory === "reviewable") {
+      } else if (dropdownValue === "Reviewable") {
         return true;
       } else {
         return false;
       }
     });
-  }, [subjectNumber, questionNumber, dropdownValue]);
+  }, [subjectNumber, questionNumber, dropdownValue, mcqArray]);
 
   const updateSelectedOption = (option) => {
     setMcqArray((prevState) => {

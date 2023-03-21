@@ -3,7 +3,7 @@ import React, { useState, useEffect } from "react";
 import "./Countdown.css";
 
 const Countdown = ({ finishTest }) => {
-  const [remainingTime, setRemainingTime] = useState(120);
+  const [remainingTime, setRemainingTime] = useState(300);
 
   useEffect(() => {
     const intervalId = setInterval(() => {

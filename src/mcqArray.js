@@ -37,6 +37,80 @@ const mcqArray = [
         category: "unattempted",
         selectedOption: "",
       },
+      {
+        question: "Which of the following is the graph of y = sin x?",
+        options: ["Option A", "Option B", "Option C", "Option D"],
+        answer: "Option C",
+        category: "unattempted",
+        selectedOption: "",
+      },
+      {
+        question:
+          "What is the solution to the differential equation dy/dx = 2x?",
+        options: ["x^2 + C", "2x^2", "x^2", "2x + C"],
+        answer: "2x + C",
+        category: "unattempted",
+        selectedOption: "",
+      },
+      {
+        question: "What is the domain of the function f(x) = 1/x?",
+        options: ["(0, ∞)", "(-∞, 0)", "(-∞, ∞)", "(0, 1) U (1, ∞)"],
+        answer: "(0, ∞)",
+        category: "unattempted",
+        selectedOption: "",
+      },
+      {
+        question:
+          "What is the coefficient of x^4 in the expansion of (1 + x)^6?",
+        options: ["15", "20", "6", "none of these"],
+        answer: "15",
+        category: "unattempted",
+        selectedOption: "",
+      },
+      {
+        question: "What is the inverse of the function f(x) = x^3?",
+        options: ["x^(1/3)", "1/x^3", "x^(3)", "1/x^(3)"],
+        answer: "x^(1/3)",
+        category: "unattempted",
+        selectedOption: "",
+      },
+      {
+        question: "What is the limit of (sinx)/x as x approaches 0?",
+        options: ["1", "0", "undefined", "infinite"],
+        answer: "1",
+        category: "unattempted",
+        selectedOption: "",
+      },
+      {
+        question: "What is the derivative of sin x?",
+        options: ["cos x", "sin x", "-cos x", "-sin x"],
+        answer: "cos x",
+        category: "unattempted",
+        selectedOption: "",
+      },
+      {
+        question: "What is the value of log2(32)?",
+        options: ["2", "3", "4", "5"],
+        answer: "5",
+        category: "unattempted",
+        selectedOption: "",
+      },
+      {
+        question:
+          "What is the slope of the line passing through the points (1, 2) and (3, 4)?",
+        options: ["1/2", "1", "2", "undefined"],
+        answer: "1/2",
+        category: "unattempted",
+        selectedOption: "",
+      },
+      {
+        question:
+          "What is the solution to the system of equations: 2x + y = 5 and x - y = 1?",
+        options: ["(2, 3)", "(3, 2)", "(-2, 3)", "(3, -2)"],
+        answer: "(3, 2)",
+        category: "unattempted",
+        selectedOption: "",
+      },
     ],
   },
   {
