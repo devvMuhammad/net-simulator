@@ -16,9 +16,13 @@ const Countdown = ({ finishTest }) => {
     return () => clearInterval(intervalId);
   }, [remainingTime]);
 
-  const hours = Math.floor(remainingTime / 3600);
-  const minutes = Math.floor((remainingTime % 3600) / 60);
-  const seconds = remainingTime % 60;
+  const hours = Math.floor(remainingTime / 3600)
+    .toString()
+    .padStart(2, "0"); // add leading zero to single digit hours
+  const minutes = Math.floor((remainingTime % 3600) / 60)
+    .toString()
+    .padStart(2, "0"); // add leading zero to single digit minutes
+  const seconds = (remainingTime % 60).toString().padStart(2, "0"); // add leading zero to single digit seconds
 
   return (
     <div className="countdown-container">
