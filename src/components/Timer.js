@@ -5,16 +5,16 @@ import "./Countdown.css";
 const Countdown = ({ finishTest }) => {
   const [remainingTime, setRemainingTime] = useState(300);
 
-  // useEffect(() => {
-  //   const intervalId = setInterval(() => {
-  //     setRemainingTime((prevTime) => prevTime - 1);
-  //   }, 1000);
-  //   if (remainingTime === 0) {
-  //     finishTest();
-  //     clearInterval(intervalId);
-  //   }
-  //   return () => clearInterval(intervalId);
-  // }, [remainingTime]);
+  useEffect(() => {
+    const intervalId = setInterval(() => {
+      setRemainingTime((prevTime) => prevTime - 1);
+    }, 1000);
+    if (remainingTime === 0) {
+      finishTest();
+      clearInterval(intervalId);
+    }
+    return () => clearInterval(intervalId);
+  }, [remainingTime]);
 
   const hours = Math.floor(remainingTime / 3600)
     .toString()
