@@ -210,6 +210,23 @@ const mcqArray = [
       },
     ],
   },
+  {
+    subject: "English",
+    questions: [
+      {
+        question: "Who is national poet of England?",
+        options: [
+          "William Shakespeare",
+          "Robert Frost",
+          "William Wordsworth",
+          "Charles Dickens",
+        ],
+        answer: "William Shakespeare",
+        category: "unattempted",
+        selectedOption: "",
+      },
+    ],
+  },
 ];
 
 export default mcqArray;
