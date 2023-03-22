@@ -105,6 +105,7 @@ const Functionalities = ({ setDropdownValue, dropdownValue, outOf }) => {
     setQuestionNumber((num) => num + 1);
   };
   const prevHandler = () => {
+    setReviewEnabled(false);
     if (dropdownValue !== "All") {
       setOtherQuestionNumber((num) => num - 1); // it has to decrement, no matter what.
     }
@@ -136,6 +137,7 @@ const Functionalities = ({ setDropdownValue, dropdownValue, outOf }) => {
   };
 
   const nextSectionHandler = () => {
+    setReviewEnabled(false);
     if (subjectNumber === numberOfSubjects - 1) {
       setSubjectNumber(0); //return to first section.
       return;
@@ -145,6 +147,7 @@ const Functionalities = ({ setDropdownValue, dropdownValue, outOf }) => {
   };
 
   const previousSectionHandler = () => {
+    setReviewEnabled(false);
     if (subjectNumber === 0) {
       //Disable the button.
       return;
@@ -154,6 +157,7 @@ const Functionalities = ({ setDropdownValue, dropdownValue, outOf }) => {
   };
 
   const firstHandler = () => {
+    setReviewEnabled(false);
     if (dropdownValue !== "All") {
       setOtherQuestionNumber(1);
     }
@@ -162,6 +166,7 @@ const Functionalities = ({ setDropdownValue, dropdownValue, outOf }) => {
   };
 
   const lastHandler = () => {
+    setReviewEnabled(false);
     if (dropdownValue !== "All") {
       setOtherQuestionNumber(outOf);
     }
