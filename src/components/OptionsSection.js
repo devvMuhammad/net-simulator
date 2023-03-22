@@ -9,9 +9,10 @@ const OptionsSection = ({ dropdownValue }) => {
   );
   const { setSaveEnabled } = useContext(saveContext);
   const { mcqArray, setMcqArray } = useContext(mcqContext);
-  useEffect(() => {
-    const selectedOption =
+  const selectedOption =
     mcqArray[subjectNumber].questions[questionNumber].selectedOption;
+
+useEffect(() => {
     const currentQuesionCategory =
       mcqArray[subjectNumber].questions[questionNumber].category;
     // console.log(currentQuesionCategory);
