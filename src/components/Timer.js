@@ -1,6 +1,6 @@
 /*eslint-disable react-hooks/exhaustive-deps*/
 import React, { useState, useEffect } from "react";
-import "./Countdown.css";
+import "./Timer.css";
 
 const Countdown = ({ finishTest }) => {
   const [remainingTime, setRemainingTime] = useState(300);

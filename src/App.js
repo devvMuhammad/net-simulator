@@ -24,7 +24,9 @@ const App = () => {
             <h1>Dear, your score is {result}</h1>
             <ul>
               {subjectScores.map((elm) => (
-                <li key={elm.subject}>{`${elm.subject}:${elm.score}`}</li>
+                <li
+                  key={elm.subject}
+                >{`${elm.subject}:${elm.score}/${elm.total}`}</li>
               ))}
             </ul>
           </>
