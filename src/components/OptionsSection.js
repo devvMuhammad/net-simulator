@@ -24,7 +24,7 @@ const OptionsSection = ({ dropdownValue }) => {
         return false;
       }
     });
-  }, [subjectNumber, questionNumber, dropdownValue, mcqArray]);
+  }, [subjectNumber, questionNumber, dropdownValue]);
 
   const updateSelectedOption = (option) => {
     setMcqArray((prevState) => {
