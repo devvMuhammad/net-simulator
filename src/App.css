@@ -4,12 +4,17 @@ body {
   font-family: Trebuchet MS;
 }
 header {
-  height: 24px;
+  height: 5vh;
   display: flex;
   justify-content: space-between;
   align-items: center;
   border: 2px solid #3a6ea5;
   padding: 2px;
+}
+.net-demo {
+  display: flex;
+  flex-direction: column;
+  text-align: center;
 }
 .subject,
 .studentName {
@@ -22,6 +27,12 @@ header {
   color: #c00000;
   font-size: 19px;
   font-weight: bold;
+  text-align: center;
+}
+@media (max-height: 700px), (max-width: 700px) {
+  header {
+    height: 10vh;
+  }
 }
 #first-section {
   height: 191px;
@@ -127,40 +138,73 @@ header {
   resize: none;
 }
 #final-section {
-  height: 100px;
   background-color: #f0f8ff;
   border: 2px solid #3a6ea5;
   border-top: none;
   display: flex;
   flex-direction: column;
 }
+
 .functionalities {
   display: flex;
-  height: 70px;
+  flex-wrap: wrap;
+  justify-content: space-between;
+  align-items: center;
+  /* padding: 10px; */
 }
+
 .dropdown-container {
   display: flex;
+  flex-wrap: wrap;
   justify-content: center;
   align-items: center;
-  flex-grow: 70;
-  transform: translateX(-10%);
 }
+
+.countdown-container {
+  display: flex;
+  align-items: center;
+  margin-right: 10px;
+}
+
+.countdown-box {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 50px;
+  height: 50px;
+  background-color: #ddd;
+  margin-right: 5px;
+}
+
+.countdown-separator {
+  font-size: 24px;
+  margin-right: 5px;
+}
+
 .dropdown {
-  margin: 0 20px;
-  transform: scale(1.2);
+  margin-right: 10px;
+  margin-bottom: 10px;
+  font-size: 16px;
 }
+
 .buttons-container {
   display: flex;
+  flex-wrap: wrap;
   justify-content: flex-end;
-  flex-grow: 1;
+  margin-bottom: 10px;
 }
+
 .buttons-container input[type="image"] {
   height: 60px;
+  /* transform: scale(1.2); */
 }
+
 .finish-test {
   display: flex;
   justify-content: center;
+  margin-bottom: 10px;
 }
+
 .finishing-paragraph {
   font-family: Trebuchet MS;
   color: blue;
@@ -168,19 +212,49 @@ header {
   margin: 0;
   text-decoration: underline;
 }
+
 .finishing-paragraph:hover {
   transform: translateY(-2px);
   cursor: pointer;
 }
+
 .finishing-paragraph span {
   font-weight: bold;
 }
+
 #ending {
   color: red;
   text-align: center;
   margin: 6px 0px;
 }
+
 #ending span {
   text-decoration: underline;
   font-weight: bold;
+}
+
+@media (max-width: 800px), (max-height: 400px) {
+  .functionalities {
+    flex-direction: column;
+    align-items: stretch;
+  }
+  .dropdown-container {
+    margin-right: 0;
+    margin-bottom: 10px;
+    transform: none;
+  }
+  .dropdown {
+    margin-right: 0;
+    margin-bottom: 10px;
+    transform: none;
+  }
+  .countdown-container {
+    margin: 10px;
+  }
+  .buttons-container {
+    justify-content: center;
+  }
+  .buttons-container input[type="image"] {
+    height: 50px;
+  }
 }

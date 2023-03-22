@@ -350,7 +350,6 @@ const Functionalities = ({ setDropdownValue, dropdownValue, outOf }) => {
               alt="save"
               onClick={lastHandler}
             />
-            <input type="image" src={helpButton} alt="save" />
           </div>
         </div>
       </div>
