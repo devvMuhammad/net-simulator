@@ -111,6 +111,246 @@ const mcqArray = [
         selectedOption: "",
         category: "unattempted",
       },
+      {
+        question: "Find the argument of the complex number (1 + i)^5.",
+        options: ["pi/4", "pi/2", "3pi/4", "pi"],
+        answer: "pi/4",
+        selectedOption: "",
+        category: "unattempted",
+      },
+      {
+        question:
+          "Which conic section is obtained when a plane intersects a double cone and the plane is parallel to one of the cones?",
+        options: ["ellipse", "parabola", "hyperbola", "circle"],
+        answer: "circle",
+        selectedOption: "",
+        category: "unattempted",
+      },
+      {
+        question:
+          "If a + b + c = 3, then what is the minimum value of (a^2 + 1)(b^2 + 1)(c^2 + 1)?",
+        options: ["2", "3", "8", "5"],
+        answer: "8",
+        selectedOption: "",
+        category: "unattempted",
+      },
+      {
+        question:
+          "If the arithmetic mean of two positive numbers is 6 and the geometric mean is 4, then what is the larger number?",
+        options: ["8", "9", "10", "11"],
+        answer: "8",
+        selectedOption: "",
+        category: "unattempted",
+      },
+      {
+        question: "Evaluate the integral of x^3/(1+x^2)^2 with respect to x.",
+        options: [
+          "-x/(1+x^2) + C",
+          "1/2 ln(1+x^2) + C",
+          "-1/2 ln(1+x^2) + C",
+          "-1/2 tan^-1(x) + C",
+        ],
+        answer: "-x/(1+x^2) + C",
+        selectedOption: "",
+        category: "unattempted",
+      },
+      {
+        question: "What is the Maclaurin series expansion of sin(x)?",
+        options: [
+          "x - x^3/3! + x^5/5! - x^7/7! + ...",
+          "1 - x^2/2! + x^4/4! - x^6/6! + ...",
+          "x + x^3/3! + x^5/5! + x^7/7! + ...",
+          "None of the above",
+        ],
+        answer: "x - x^3/3! + x^5/5! - x^7/7 + ...",
+        selectedOption: "",
+        category: "unattempted",
+      },
+      {
+        question:
+          "What is the equation of the line passing through the point (3, -2, 1) and parallel to the vector <2, 1, -3>?",
+        options: [
+          "2x + y - 3z = 13",
+          "2x + y - 3z = -13",
+          "2x + y - 3z = -19",
+          "None of the above",
+        ],
+        answer: "2x + y - 3z = 13",
+        selectedOption: "",
+        category: "unattempted",
+      },
+      {
+        question:
+          "Find the standard form of the equation of a parabola with vertex at (1, -3) and focus at (1, -5).",
+        options: [
+          "(y+3)^2 = 4(x-1)",
+          "(x-1)^2 = 4(y+3)",
+          "(y+3)^2 = -4(x-1)",
+          "None of the above",
+        ],
+        answer: "(y+3)^2 = 4(x-1)",
+        selectedOption: "",
+        category: "unattempted",
+      },
+      {
+        question:
+          "For which values of x is the function f(x) = (x^2-4)/(x-2) continuous?",
+        options: ["x = 0", "x = 1", "x = 2", "x = 4"],
+        answer: "x = 2",
+        selectedOption: "",
+        category: "unattempted",
+      },
+      {
+        question:
+          "What is the limit of the function f(x) = (x^2-1)/(x-1) as x approaches 1?",
+        options: ["2", "0", "Does not exist", "Infinity"],
+        answer: "2",
+        selectedOption: "",
+        category: "unattempted",
+      },
+      {
+        question:
+          "If the probability of an event is 0.3, what is the probability of its complement?",
+        options: [
+          "0.3",
+          "0.7",
+          "1.0",
+          "Cannot be determined",
+          "None of the above",
+        ],
+        answer: "0.7",
+        selectedOption: "",
+        category: "unattempted",
+      },
+      {
+        question:
+          "In how many ways can a committee of 4 be chosen from 10 people?",
+        options: ["210", "840", "5040", "None of the above"],
+        answer: "210",
+        selectedOption: "",
+        category: "unattempted",
+      },
+      {
+        question:
+          'In how many ways can the letters of the word "BANANA" be arranged?',
+        options: ["60", "120", "360", "None of the above"],
+        answer: "60",
+        selectedOption: "",
+        category: "unattempted",
+      },
+      {
+        question:
+          "Find the angle between the vectors a = i + 2j and b = 2i + j.",
+        options: ["30 degrees", "45 degrees", "60 degrees", "90 degrees"],
+        answer: "45 degrees",
+        selectedOption: "",
+        category: "unattempted",
+      },
+      {
+        question:
+          "Find the equation of the hyperbola with vertices at (0, ±5) and foci at (0, ±√29).",
+        options: [
+          "y^2/25 - x^2/16 = 1",
+          "x^2/25 - y^2/16 = 1",
+          "y^2/16 - x^2/25 = 1",
+          "x^2/16 - y^2/25 = 1",
+        ],
+        answer: "y^2/16 - x^2/25 = 1",
+        selectedOption: "",
+        category: "unattempted",
+      },
+      {
+        question:
+          "Determine the values of a and b for which the function f(x) = {ax+b, x<2; 3x-2, x>=2} is continuous at x=2.",
+        options: ["a=3, b=4", "a=1, b=-1", "a=1, b=4", "a=3, b=-2"],
+        answer: "a=1, b=-1",
+        selectedOption: "",
+        category: "unattempted",
+      },
+      {
+        question: "Find the limit lim x->∞ (x^2 - 5x + 6)/(2x^2 + 3x - 2).",
+        options: ["1/2", "3/4", "1", "2"],
+        answer: "1/2",
+        selectedOption: "",
+        category: "unattempted",
+      },
+      {
+        question:
+          "A fair die is rolled. What is the probability that the result is a prime number?",
+        options: ["1/2", "1/3", "2/3", "1/6"],
+        answer: "1/2",
+        selectedOption: "",
+        category: "unattempted",
+      },
+      {
+        question:
+          "In how many ways can 3 people be chosen from 5 to form a committee?",
+        options: ["5", "8", "10", "15"],
+        answer: "10",
+        selectedOption: "",
+        category: "unattempted",
+      },
+      {
+        question:
+          "In how many ways can the letters of the word APPLE be arranged?",
+        options: ["60", "120", "240", "360"],
+        answer: "60",
+        selectedOption: "",
+        category: "unattempted",
+      },
+      {
+        question:
+          "In how many ways can 4 boys and 3 girls be seated in a row if the girls must sit together?",
+        options: ["144", "288", "5040", "1440"],
+        answer: "1440",
+        selectedOption: "",
+        category: "unattempted",
+      },
+      {
+        question:
+          "Find the equation of the circle passing through (2,1) and touching the line 2x+3y-4=0 at (1,-1).",
+        options: [
+          "x^2+y^2-6x-2y+5=0",
+          "x^2+y^2+6x+2y-5=0",
+          "x^2+y^2+6x+2y+5=0",
+          "x^2+y^2-6x-2y-5=0",
+        ],
+        answer: "x^2+y^2-6x-2y+5=0",
+        selectedOption: "",
+        category: "unattempted",
+      },
+      {
+        question:
+          "What is the coefficient of x^3 in the expansion of (1+2x)^5?",
+        options: ["40", "80", "100", "120"],
+        answer: "40",
+        selectedOption: "",
+        category: "unattempted",
+      },
+      {
+        question:
+          "What is the probability of getting at least one head when three fair coins are flipped simultaneously?",
+        options: ["1/8", "3/8", "5/8", "7/8"],
+        answer: "7/8",
+        selectedOption: "",
+        category: "unattempted",
+      },
+      {
+        question:
+          "What is the limit of (x^3 - 2x^2 + x) / (x^2 - 3x + 2) as x approaches 2?",
+        options: ["1", "2", "3", "4"],
+        answer: "3",
+        selectedOption: "",
+        category: "unattempted",
+      },
+      {
+        question:
+          "India and Pakistan are playing a cricket match at the MCG. The probability of Pakistan not losing is:",
+        options: ["1/2", "2/3", "1", "0"],
+        answer: "2/3",
+        selectedOption: "",
+        category: "unattempted",
+      },
     ],
   },
   {
@@ -256,6 +496,52 @@ const mcqArray = [
         selectedOption: "",
         category: "unattempted",
       },
+      {
+        question:
+          "What is the direction of the magnetic field lines produced by a current-carrying wire?",
+        options: [
+          "Circular around the wire",
+          "Radial from the wire",
+          "Tangential to the wire",
+          "Longitudinal along the wire",
+        ],
+        answer: "Circular around the wire",
+        selectedOption: "",
+        category: "unattempted",
+      },
+      {
+        question:
+          "What happens to the force between two charges when the distance between them is tripled?",
+        options: [
+          "It becomes 9 times smaller",
+          "It becomes 3 times smaller",
+          "It becomes 1/3 times smaller",
+          "It remains the same",
+        ],
+        answer: "It becomes 1/3 times smaller",
+        selectedOption: "",
+        category: "unattempted",
+      },
+      {
+        question: "What is the SI unit of electric field?",
+        options: ["Coulomb", "Volt", "Watt", "Newton/Coulomb"],
+        answer: "Newton/Coulomb",
+        selectedOption: "",
+        category: "unattempted",
+      },
+      {
+        question:
+          "What is the cause of the magnetic field produced by a moving charged particle?",
+        options: [
+          "The electric field of the particle",
+          "The charge of the particle",
+          "The motion of the particle",
+          "The mass of the particle",
+        ],
+        answer: "The motion of the particle",
+        selectedOption: "",
+        category: "unattempted",
+      },
     ],
   },
   {
@@ -296,6 +582,28 @@ const mcqArray = [
         category: "unattempted",
         selectedOption: "",
       },
+      {
+        question: "Which of the following has the highest boiling point?",
+        options: ["CH4", "C2H6", "C3H8", "C4H10"],
+        correctOption: "C4H10",
+        selectedOption: "",
+        category: "unattempted",
+      },
+      {
+        question: "What is the oxidation state of sulphur in H2SO4?",
+        options: ["+6", "+4", "+2", "-2"],
+        correctOption: "+6",
+        selectedOption: "",
+        category: "unattempted",
+      },
+      {
+        question:
+          "Which of the following compounds has the lowest boiling point?",
+        options: ["CH3OH", "C2H5OH", "C3H7OH", "C4H9OH"],
+        correctOption: "CH3OH",
+        selectedOption: "",
+        category: "unattempted",
+      },
     ],
   },
   {
@@ -303,17 +611,9 @@ const mcqArray = [
     questions: [
       {
         question:
-          "If CHAIR is coded as FHDOU, then what is the code for TABLE?",
-        options: ["WDOUH", "YFDOU", "WDRQJ", "YHJUL"],
-        correctOption: "WDRQJ",
-        selectedOption: "",
-        category: "unattempted",
-      },
-      {
-        question:
           "What is the next number in the sequence: 1, 2, 4, 7, 11, 16, ...",
         options: ["22", "23", "24", "25"],
-        correctOption: "23",
+        answer: "23",
         selectedOption: "",
         category: "unattempted",
       },
@@ -321,7 +621,7 @@ const mcqArray = [
         question:
           "What is the next number in the sequence: 1, 1, 2, 3, 5, 8, 13, ...",
         options: ["20", "21", "22", "23"],
-        correctOption: "21",
+        answer: "21",
         selectedOption: "",
         category: "unattempted",
       },
@@ -329,21 +629,42 @@ const mcqArray = [
         question:
           "If PURPLE is coded as SVUNQF, then what is the code for ORANGE?",
         options: ["QSPCWH", "QSPBNG", "PRTGFD", "PSUDMF"],
-        correctOption: "QSPCWH",
+        answer: "QSPCWH",
         selectedOption: "",
         category: "unattempted",
       },
       {
         question: "Find odd one out:",
         options: ["cat", "dog", "cow", "lion"],
-        correctOption: "cow",
+        answer: "cow",
         selectedOption: "",
         category: "unattempted",
       },
       {
         question: "Find odd one out:",
-        options: ["piano", "violin", "trumpet", "cello", "guitar"],
-        correctOption: "trumpet",
+        options: ["piano", "violin", "trumpet", "cello"],
+        answer: "trumpet",
+        selectedOption: "",
+        category: "unattempted",
+      },
+      {
+        question: "Which of the following is an isomer of butane?",
+        options: ["methane", "ethene", "propane", "2-methylpropane"],
+        answer: "2-methylpropane",
+        selectedOption: "",
+        category: "unattempted",
+      },
+      {
+        question:
+          "Consider the following reaction: N2(g) + 3H2(g) ⇌ 2NH3(g) + heat. What happens to the concentration of NH3 when the pressure of the system is increased?",
+        options: [
+          "The concentration of NH3 increases",
+          "The concentration of NH3 decreases",
+          "The concentration of NH3 remains unchanged",
+          "The concentration of NH3 increases or decreases depending on the initial concentration of the reactants and products",
+        ],
+        answer:
+          "The concentration of NH3 increases or decreases depending on the initial concentration of the reactants and products",
         selectedOption: "",
         category: "unattempted",
       },
