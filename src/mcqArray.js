@@ -47,8 +47,8 @@ const mcqArray = [
       },
       {
         question: "If f(x) = x^3 - 3x^2 - 4x + 12, what is f(2)?",
-        options: ["-2", "2", "10", "12"],
-        answer: "10",
+        options: ["-2", "2", "0", "12"],
+        answer: "0",
         selectedOption: "",
         category: "unattempted",
       },
