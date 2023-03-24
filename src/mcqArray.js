@@ -38,78 +38,78 @@ const mcqArray = [
         selectedOption: "",
       },
       {
-        question: "Which of the following is the graph of y = sin x?",
-        options: ["Option A", "Option B", "Option C", "Option D"],
-        answer: "Option C",
-        category: "unattempted",
+        question:
+          "If a, b, and c are the lengths of the sides of a triangle, then which of the following is true?",
+        options: ["a+b>c", "a+c>b", "b+c>a", "All of the above"],
+        answer: "All of the above",
         selectedOption: "",
+        category: "unattempted",
+      },
+      {
+        question: "If f(x) = x^3 - 3x^2 - 4x + 12, what is f(2)?",
+        options: ["-2", "2", "10", "12"],
+        answer: "10",
+        selectedOption: "",
+        category: "unattempted",
       },
       {
         question:
-          "What is the solution to the differential equation dy/dx = 2x?",
-        options: ["x^2 + C", "2x^2", "x^2", "2x + C"],
-        answer: "2x + C",
-        category: "unattempted",
+          "If loga(5) = p and loga(25) = q, what is the value of p + q?",
+        options: ["1", "2", "3", "4"],
+        answer: "3",
         selectedOption: "",
-      },
-      {
-        question: "What is the domain of the function f(x) = 1/x?",
-        options: ["(0, ∞)", "(-∞, 0)", "(-∞, ∞)", "(0, 1) U (1, ∞)"],
-        answer: "(0, ∞)",
         category: "unattempted",
-        selectedOption: "",
       },
       {
         question:
-          "What is the coefficient of x^4 in the expansion of (1 + x)^6?",
-        options: ["15", "20", "6", "none of these"],
-        answer: "15",
-        category: "unattempted",
+          "If the roots of the equation x^2 + bx + c = 0 are -3 and -4, what is the value of c?",
+        options: ["-7", "7", "-12", "12"],
+        answer: "-12",
         selectedOption: "",
+        category: "unattempted",
       },
       {
-        question: "What is the inverse of the function f(x) = x^3?",
-        options: ["x^(1/3)", "1/x^3", "x^(3)", "1/x^(3)"],
-        answer: "x^(1/3)",
-        category: "unattempted",
+        question: "If sin(x) = 1/2 and cos(x) = √3/2, what is tan(x)?",
+        options: ["1", "√3", "2", "-√3"],
+        answer: "√3",
         selectedOption: "",
-      },
-      {
-        question: "What is the limit of (sinx)/x as x approaches 0?",
-        options: ["1", "0", "undefined", "infinite"],
-        answer: "1",
         category: "unattempted",
-        selectedOption: "",
-      },
-      {
-        question: "What is the derivative of sin x?",
-        options: ["cos x", "sin x", "-cos x", "-sin x"],
-        answer: "cos x",
-        category: "unattempted",
-        selectedOption: "",
-      },
-      {
-        question: "What is the value of log2(32)?",
-        options: ["2", "3", "4", "5"],
-        answer: "5",
-        category: "unattempted",
-        selectedOption: "",
       },
       {
         question:
-          "What is the slope of the line passing through the points (1, 2) and (3, 4)?",
-        options: ["1/2", "1", "2", "undefined"],
-        answer: "1/2",
-        category: "unattempted",
+          "If A = {(x,y) | x + y = 0}, B = {(x,y) | x - y = 0}, and C = {(x,y) | x + y = 2}, which of the following is true?",
+        options: ["A ⊆ B", "A ⊂ B", "A = C", "B ⊂ C"],
+        answer: "A ⊂ B",
         selectedOption: "",
+        category: "unattempted",
+      },
+      {
+        question: "What is the inverse of the matrix [1 2; 3 4]?",
+        options: [
+          "[4 -2; -3 1]",
+          "[1/4 -1/2; -3/4 1/2]",
+          "[4 2; 3 1]",
+          "[-1/4 1/2; 3/4 -1/2]",
+        ],
+        answer: "[-2 1; 3/2 -1/2]",
+        selectedOption: "",
+        category: "unattempted",
       },
       {
         question:
-          "What is the solution to the system of equations: 2x + y = 5 and x - y = 1?",
-        options: ["(2, 3)", "(3, 2)", "(-2, 3)", "(3, -2)"],
-        answer: "(3, 2)",
-        category: "unattempted",
+          "What is the value of the expression (2x + 3y)^2 - (2x - 3y)^2?",
+        options: ["24xy", "20xy", "12xy", "18xy"],
+        answer: "24xy",
         selectedOption: "",
+        category: "unattempted",
+      },
+      {
+        question:
+          "What is the sum of the first 20 terms of the arithmetic sequence -3, -1, 1, ...?",
+        options: ["-400", "400", "0", "200"],
+        answer: "0",
+        selectedOption: "",
+        category: "unattempted",
       },
     ],
   },
@@ -168,6 +168,94 @@ const mcqArray = [
         category: "unattempted",
         selectedOption: "",
       },
+      {
+        question:
+          "Which one of the following materials has the highest electrical conductivity?",
+        options: ["Copper", "Silver", "Gold", "Aluminum"],
+        answer: "Silver",
+        selectedOption: "",
+        category: "unattempted",
+      },
+      {
+        question: "Which one of the following is NOT a unit of power?",
+        options: ["Joule/second", "Watt", "Horsepower", "Joule/meter"],
+        answer: "Joule/meter",
+        selectedOption: "",
+        category: "unattempted",
+      },
+      {
+        question:
+          "Which one of the following statements about diffraction is FALSE?",
+        options: [
+          "It occurs when light passes through a narrow slit",
+          "It is responsible for the color patterns seen in a CD",
+          "It can be used to measure the size of an object",
+          "It only occurs with sound waves",
+        ],
+        answer: "It only occurs with sound waves",
+        selectedOption: "",
+        category: "unattempted",
+      },
+      {
+        question:
+          "What is the magnitude of the magnetic field at the center of a circular coil carrying a current I?",
+        options: ["μ₀I/2R", "μ₀I/4R", "μ₀I/R", "μ₀IR/2"],
+        answer: "μ₀I/2R",
+        selectedOption: "",
+        category: "unattempted",
+      },
+      {
+        question:
+          "Which one of the following statements about the photoelectric effect is FALSE?",
+        options: [
+          "It was explained by Albert Einstein in 1905",
+          "It can be used to measure the frequency of light",
+          "It occurs when light is shone on a metal surface",
+          "It is caused by the emission of electrons from the metal surface",
+        ],
+        answer:
+          "It is caused by the emission of electrons from the metal surface",
+        selectedOption: "",
+        category: "unattempted",
+      },
+      {
+        question:
+          "What is the ratio of the mass of a proton to the mass of an electron?",
+        options: ["1:1", "1:1836", "1836:1", "1:0"],
+        answer: "1836:1",
+        selectedOption: "",
+        category: "unattempted",
+      },
+      {
+        question: "What is the speed of sound in air at 20°C?",
+        options: ["343 m/s", "330 m/s", "300 m/s", "290 m/s"],
+        answer: "343 m/s",
+        selectedOption: "",
+        category: "unattempted",
+      },
+      {
+        question:
+          "Which one of the following is NOT a type of radioactive decay?",
+        options: ["Alpha decay", "Beta decay", "Gamma decay", "Delta decay"],
+        answer: "Delta decay",
+        selectedOption: "",
+        category: "unattempted",
+      },
+      {
+        question: "Which one of the following is a scalar quantity?",
+        options: ["Velocity", "Acceleration", "Force", "Energy"],
+        answer: "Energy",
+        selectedOption: "",
+        category: "unattempted",
+      },
+      {
+        question:
+          "What is the work done by a force of 10 N acting on an object that moves 5 m in the direction of the force?",
+        options: ["5 J", "10 J", "50 J", "100 J"],
+        answer: "50 J",
+        selectedOption: "",
+        category: "unattempted",
+      },
     ],
   },
   {
@@ -211,19 +299,53 @@ const mcqArray = [
     ],
   },
   {
-    subject: "English",
+    subject: "Intelligence",
     questions: [
       {
-        question: "Who is national poet of England?",
-        options: [
-          "William Shakespeare",
-          "Robert Frost",
-          "William Wordsworth",
-          "Charles Dickens",
-        ],
-        answer: "William Shakespeare",
-        category: "unattempted",
+        question:
+          "If CHAIR is coded as FHDOU, then what is the code for TABLE?",
+        options: ["WDOUH", "YFDOU", "WDRQJ", "YHJUL"],
+        correctOption: "WDRQJ",
         selectedOption: "",
+        category: "unattempted",
+      },
+      {
+        question:
+          "What is the next number in the sequence: 1, 2, 4, 7, 11, 16, ...",
+        options: ["22", "23", "24", "25"],
+        correctOption: "23",
+        selectedOption: "",
+        category: "unattempted",
+      },
+      {
+        question:
+          "What is the next number in the sequence: 1, 1, 2, 3, 5, 8, 13, ...",
+        options: ["20", "21", "22", "23"],
+        correctOption: "21",
+        selectedOption: "",
+        category: "unattempted",
+      },
+      {
+        question:
+          "If PURPLE is coded as SVUNQF, then what is the code for ORANGE?",
+        options: ["QSPCWH", "QSPBNG", "PRTGFD", "PSUDMF"],
+        correctOption: "QSPCWH",
+        selectedOption: "",
+        category: "unattempted",
+      },
+      {
+        question: "Find odd one out:",
+        options: ["cat", "dog", "cow", "lion"],
+        correctOption: "cow",
+        selectedOption: "",
+        category: "unattempted",
+      },
+      {
+        question: "Find odd one out:",
+        options: ["piano", "violin", "trumpet", "cello", "guitar"],
+        correctOption: "trumpet",
+        selectedOption: "",
+        category: "unattempted",
       },
     ],
   },
