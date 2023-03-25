@@ -611,10 +611,9 @@ const mcqArray = [
           "The concentration of NH3 increases",
           "The concentration of NH3 decreases",
           "The concentration of NH3 remains unchanged",
-          "The concentration of NH3 increases or decreases depending on the initial concentration of the reactants and products",
+          "Insufficient Information",
         ],
-        answer:
-          "The concentration of NH3 increases or decreases depending on the initial concentration of the reactants and products",
+        answer: "The concentration of NH3 increases",
         selectedOption: "",
         category: "unattempted",
       },
