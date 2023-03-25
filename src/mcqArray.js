@@ -604,6 +604,20 @@ const mcqArray = [
         selectedOption: "",
         category: "unattempted",
       },
+      {
+        question:
+          "Consider the following reaction: N2(g) + 3H2(g) ⇌ 2NH3(g) + heat. What happens to the concentration of NH3 when the pressure of the system is increased?",
+        options: [
+          "The concentration of NH3 increases",
+          "The concentration of NH3 decreases",
+          "The concentration of NH3 remains unchanged",
+          "The concentration of NH3 increases or decreases depending on the initial concentration of the reactants and products",
+        ],
+        answer:
+          "The concentration of NH3 increases or decreases depending on the initial concentration of the reactants and products",
+        selectedOption: "",
+        category: "unattempted",
+      },
     ],
   },
   {
@@ -668,20 +682,6 @@ const mcqArray = [
         question: "Which of the following is an isomer of butane?",
         options: ["methane", "ethene", "propane", "2-methylpropane"],
         answer: "2-methylpropane",
-        selectedOption: "",
-        category: "unattempted",
-      },
-      {
-        question:
-          "Consider the following reaction: N2(g) + 3H2(g) ⇌ 2NH3(g) + heat. What happens to the concentration of NH3 when the pressure of the system is increased?",
-        options: [
-          "The concentration of NH3 increases",
-          "The concentration of NH3 decreases",
-          "The concentration of NH3 remains unchanged",
-          "The concentration of NH3 increases or decreases depending on the initial concentration of the reactants and products",
-        ],
-        answer:
-          "The concentration of NH3 increases or decreases depending on the initial concentration of the reactants and products",
         selectedOption: "",
         category: "unattempted",
       },
