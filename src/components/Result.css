@@ -46,7 +46,7 @@
 
 @media screen and (max-width: 768px) {
   .result-table {
-    font-size: 0.8rem;
+    font-size: 1rem;
   }
 }
 
@@ -75,7 +75,7 @@
   border-radius: 2rem;
   margin: 1.2rem;
   cursor: pointer;
-  width: 20%;
+  width: 200px;
 }
 .attempt-again:hover {
   background-color: #f9f9f9;
