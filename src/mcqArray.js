@@ -585,14 +585,14 @@ const mcqArray = [
       {
         question: "Which of the following has the highest boiling point?",
         options: ["CH4", "C2H6", "C3H8", "C4H10"],
-        correctOption: "C4H10",
+        answer: "C4H10",
         selectedOption: "",
         category: "unattempted",
       },
       {
         question: "What is the oxidation state of sulphur in H2SO4?",
         options: ["+6", "+4", "+2", "-2"],
-        correctOption: "+6",
+        answer: "+6",
         selectedOption: "",
         category: "unattempted",
       },
@@ -600,7 +600,24 @@ const mcqArray = [
         question:
           "Which of the following compounds has the lowest boiling point?",
         options: ["CH3OH", "C2H5OH", "C3H7OH", "C4H9OH"],
-        correctOption: "CH3OH",
+        answer: "CH3OH",
+        selectedOption: "",
+        category: "unattempted",
+      },
+    ],
+  },
+  {
+    subject: "English",
+    questions: [
+      {
+        question: "Who is the national poet of England?",
+        options: [
+          "William Shakespeare",
+          "Robert Frost",
+          "Jane Austen",
+          "Charles Dickens",
+        ],
+        answer: "William Shakespeare",
         selectedOption: "",
         category: "unattempted",
       },

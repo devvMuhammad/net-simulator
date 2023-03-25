@@ -2,6 +2,7 @@ import React, { useState } from "react";
 import Test from "./Test";
 import mcqBank from "./mcqArray";
 import testContext from "./testContext";
+import Result from "./components/Result";
 
 const App = () => {
   const [testFinished, setTestFinished] = useState(false);
@@ -15,23 +16,12 @@ const App = () => {
     subjectScores,
     setSubjectScores,
   };
+  console.log(subjectScores);
   return (
     <>
       <testContext.Provider value={testContextObject}>
         {!testFinished && <Test mcqBank={mcqBank} />}
-        {testFinished && (
-          <>
-            <h1>Dear, your score is {result}</h1>
-            <ul>
-              {subjectScores.map((elm) => (
-                <li
-                  key={elm.subject}
-                >{`${elm.subject}:${elm.score}/${elm.total}`}</li>
-              ))}
-            </ul>
-          </>
-        )}
-        ;
+        {testFinished && <Result subjectScores={subjectScores} />};
       </testContext.Provider>
     </>
   );
