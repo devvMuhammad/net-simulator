@@ -617,6 +617,13 @@ const mcqArray = [
         selectedOption: "",
         category: "unattempted",
       },
+      {
+        question: "Which of the following is an isomer of butane?",
+        options: ["methane", "ethene", "propane", "2-methylpropane"],
+        answer: "2-methylpropane",
+        selectedOption: "",
+        category: "unattempted",
+      },
     ],
   },
   {
@@ -674,13 +681,6 @@ const mcqArray = [
         question: "Find odd one out:",
         options: ["piano", "violin", "trumpet", "cello"],
         answer: "trumpet",
-        selectedOption: "",
-        category: "unattempted",
-      },
-      {
-        question: "Which of the following is an isomer of butane?",
-        options: ["methane", "ethene", "propane", "2-methylpropane"],
-        answer: "2-methylpropane",
         selectedOption: "",
         category: "unattempted",
       },
