@@ -1,5 +1,6 @@
 /* eslint-disable no-unused-vars */
 /* eslint-disable react-hooks/exhaustive-deps */
+/* eslint-disable array-callback-return */
 import { useState, useEffect, useMemo, useContext } from "react";
 import "./App.css";
 import { subjectAndQuestionContext, mcqContext, saveContext } from "./context";
@@ -18,9 +19,8 @@ function Test({ mcqBank }) {
   const [outOf, setOutOf] = useState();
   const [saveEnabled, setSaveEnabled] = useState(false);
   const [dropdownValue, setDropdownValue] = useState("All");
-  const [allMCQs, setAllMCQs] = useState([...mcqBank]);
-  // const [otherMCQs, setOtherMCQs] = useState();
-  const [mcqArray, setMcqArray] = useState([...mcqBank]);
+  const [allMCQs, setAllMCQs] = useState(mcqBank);
+  const [mcqArray, setMcqArray] = useState(mcqBank);
   const allMCQsNumber = useMemo(() => {
     return mcqBank.reduce((acc, elm) => acc + elm.questions.length, 0);
   }, [mcqBank]);
