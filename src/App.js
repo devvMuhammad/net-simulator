@@ -16,7 +16,7 @@ const App = () => {
     subjectScores,
     setSubjectScores,
   };
-  console.log(subjectScores);
+
   return (
     <>
       <testContext.Provider value={testContextObject}>

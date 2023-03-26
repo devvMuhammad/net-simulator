@@ -1,6 +1,6 @@
 /* eslint-disable no-unused-vars */
 /* eslint-disable react-hooks/exhaustive-deps */
-import { useState, useEffect, useMemo } from "react";
+import { useState, useEffect, useMemo, useContext } from "react";
 import "./App.css";
 import { subjectAndQuestionContext, mcqContext, saveContext } from "./context";
 import Ending from "./components/Ending";
@@ -9,6 +9,7 @@ import FirstSection from "./components/FirstSection";
 import Header from "./components/Header";
 import OptionsSection from "./components/OptionsSection";
 import SecondSection from "./components/SecondSection";
+import testContext from "./testContext";
 
 function Test({ mcqBank }) {
   const [subjectNumber, setSubjectNumber] = useState(0);
@@ -17,12 +18,14 @@ function Test({ mcqBank }) {
   const [outOf, setOutOf] = useState();
   const [saveEnabled, setSaveEnabled] = useState(false);
   const [dropdownValue, setDropdownValue] = useState("All");
-  const [allMCQs, setAllMCQs] = useState(mcqBank);
+  const [allMCQs, setAllMCQs] = useState([...mcqBank]);
   // const [otherMCQs, setOtherMCQs] = useState();
-  const [mcqArray, setMcqArray] = useState(mcqBank);
+  const [mcqArray, setMcqArray] = useState([...mcqBank]);
   const allMCQsNumber = useMemo(() => {
     return mcqBank.reduce((acc, elm) => acc + elm.questions.length, 0);
   }, [mcqBank]);
+
+  const { testFinished } = useContext(testContext);
 
   const subjectAndQuestionContextObject = {
     subjectNumber,
@@ -40,6 +43,20 @@ function Test({ mcqBank }) {
     saveEnabled,
     setSaveEnabled,
   };
+
+  useEffect(() => {
+    setMcqArray((prevState) => {
+      return prevState.map((subject) => {
+        subject.questions.forEach((mcq) => {
+          mcq.selectedOption = "";
+          mcq.category = "unattempted";
+        });
+      });
+    });
+    setQuestionNumber(0);
+    setOtherQuestionNumber(1);
+    setSubjectNumber(0);
+  }, [testFinished]);
 
   function filterMcqArray(category) {
     let filteredMCQs = mcqArray.reduce((acc, elm) => {

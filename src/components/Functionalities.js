@@ -10,7 +10,6 @@ import previousButton from "../images/previousButton.png";
 import previousButtonDisabled from "../images/previousDisabled.png";
 import lastButton from "../images/last.png";
 import firstButton from "../images/First.png";
-import helpButton from "../images/help.png";
 import nextSectionButton from "../images/NextSection.png";
 import nextSectionButtonDisabled from "../images/NextSectionDisabled.png";
 import previousSectionButton from "../images/PreviousSection.png";

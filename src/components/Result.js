@@ -1,7 +1,9 @@
-import React from "react";
+import React, { useContext } from "react";
+import testContext from "../testContext";
 import "./Result.css";
 
 const Result = ({ subjectScores }) => {
+  const { setTestFinished } = useContext(testContext);
   const [totalScore, totalMCQs] = subjectScores.reduce(
     (acc, elm) => {
       acc[0] += elm.score;
@@ -11,6 +13,9 @@ const Result = ({ subjectScores }) => {
     [0, 0]
   );
   const percentage = ((totalScore / totalMCQs) * 100).toFixed(2);
+  const resetTest = () => {
+    setTestFinished(false);
+  };
   return (
     <div className="result-page">
       <h1 className="result-heading">Result</h1>
@@ -43,7 +48,9 @@ const Result = ({ subjectScores }) => {
           </tr>
         </tbody>
       </table>
-      <button className="attempt-again">Attempt Again</button>
+      <button className="attempt-again" onClick={resetTest}>
+        Attempt Again
+      </button>
     </div>
   );
 };
