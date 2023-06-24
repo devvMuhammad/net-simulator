@@ -3,7 +3,12 @@
 /* eslint-disable array-callback-return */
 import { useState, useEffect, useMemo, useContext } from "react";
 import "./App.css";
-import { subjectAndQuestionContext, mcqContext, saveContext } from "./context";
+import {
+  subjectAndQuestionContext,
+  mcqContext,
+  saveContext,
+  dropdownContext,
+} from "./context";
 import Ending from "./components/Ending";
 import Functionalities from "./components/Functionalities";
 import FirstSection from "./components/FirstSection";
@@ -42,6 +47,11 @@ function Test({ mcqBank }) {
   const saveContextObject = {
     saveEnabled,
     setSaveEnabled,
+  };
+
+  const dropdownContextObject = {
+    dropdownValue,
+    setDropdownValue,
   };
 
   useEffect(() => {
@@ -100,17 +110,15 @@ function Test({ mcqBank }) {
         <subjectAndQuestionContext.Provider
           value={subjectAndQuestionContextObject}
         >
-          <Header />
-          <FirstSection dropdownValue={dropdownValue} outOf={outOf} />
-          <SecondSection />
-          <saveContext.Provider value={saveContextObject}>
-            <OptionsSection dropdownValue={dropdownValue} />
-            <Functionalities
-              setDropdownValue={setDropdownValue}
-              dropdownValue={dropdownValue}
-              outOf={outOf}
-            />
-          </saveContext.Provider>
+          <dropdownContext.Provider value={dropdownContextObject}>
+            <Header />
+            <FirstSection outOf={outOf} />
+            <SecondSection />
+            <saveContext.Provider value={saveContextObject}>
+              <OptionsSection />
+              <Functionalities outOf={outOf} />
+            </saveContext.Provider>
+          </dropdownContext.Provider>
           <Ending />
         </subjectAndQuestionContext.Provider>
       </mcqContext.Provider>

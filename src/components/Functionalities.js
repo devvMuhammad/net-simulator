@@ -1,7 +1,12 @@
 /* eslint-disable react-hooks/exhaustive-deps */
 /* eslint-disable no-unused-vars */
-import React, { useContext, useEffect, useRef, useState } from "react";
-import { mcqContext, saveContext, subjectAndQuestionContext } from "../context";
+import React, { useContext, useEffect, useState } from "react";
+import {
+  dropdownContext,
+  mcqContext,
+  saveContext,
+  subjectAndQuestionContext,
+} from "../context";
 import saveButton from "../images/Save.png";
 import saveButtonDisabled from "../images/DisabledSave.png";
 import nextButton from "../images/next.png";
@@ -20,7 +25,7 @@ import testContext from "../testContext";
 import ConfirmationOverlay from "./ConfirmationOverlay";
 import Countdown from "./Timer";
 
-const Functionalities = ({ setDropdownValue, dropdownValue, outOf }) => {
+const Functionalities = ({ outOf }) => {
   //States
   const [nextEnabled, setNextEnabled] = useState(true);
   const [nextSectionEnabled, setNextSectionEnabled] = useState(true);
@@ -38,6 +43,7 @@ const Functionalities = ({ setDropdownValue, dropdownValue, outOf }) => {
     otherQuestionNumber,
     setOtherQuestionNumber,
   } = useContext(subjectAndQuestionContext);
+  const { dropdownValue, setDropdownValue } = useContext(dropdownContext);
   const { mcqArray, setMcqArray } = useContext(mcqContext);
   const { saveEnabled, setSaveEnabled } = useContext(saveContext); // saveState enabled in optionsSection
   const { setResult, setTestFinished, setSubjectScores } =
@@ -69,10 +75,8 @@ const Functionalities = ({ setDropdownValue, dropdownValue, outOf }) => {
   }, [subjectNumber, questionNumber, dropdownValue]);
 
   useEffect(() => {
-    setReviewEnabled(dropdownValue === "reviewable" ? true : false);
-  }, [dropdownValue]);
-
-  useEffect(() => {
+    // console.log("bbb");
+    console.log(subjectNumber, questionNumber);
     setNextEnabled(() => {
       if (dropdownValue !== "All") {
         //Next button should never be disabled for 'unattem','reviewable' and 'attemepted'
@@ -92,6 +96,7 @@ const Functionalities = ({ setDropdownValue, dropdownValue, outOf }) => {
       if (otherQuestionNumber >= outOf) {
         //Hitting next at last question should send you to 'all'.
         setDropdownValue("All");
+        setNextEnabled(true);
         return;
       }
       setOtherQuestionNumber((num) => num + 1);
@@ -122,6 +127,7 @@ const Functionalities = ({ setDropdownValue, dropdownValue, outOf }) => {
   const saveHandler = () => {
     attemptMCQ();
     if (dropdownValue === "Reviewable") {
+      // setSaveEnabled(true);
       setReviewEnabled(false);
       nextHandler();
       return;

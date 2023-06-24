@@ -1,10 +1,15 @@
 import React, { useContext } from "react";
 import "../App.css";
-import { subjectAndQuestionContext, mcqContext } from "../context";
+import {
+  subjectAndQuestionContext,
+  mcqContext,
+  dropdownContext,
+} from "../context";
 import studentImage from "../student-image.jpg";
 
-const FirstSection = ({ dropdownValue, outOf }) => {
+const FirstSection = ({ outOf }) => {
   const { mcqArray } = useContext(mcqContext);
+  const { dropdownValue } = useContext(dropdownContext);
   const { subjectNumber, questionNumber, otherQuestionNumber } = useContext(
     subjectAndQuestionContext
   );

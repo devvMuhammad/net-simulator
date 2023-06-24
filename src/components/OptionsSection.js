@@ -1,9 +1,15 @@
 /* eslint-disable react-hooks/exhaustive-deps */
 import React, { useContext, useEffect } from "react";
-import { subjectAndQuestionContext, mcqContext, saveContext } from "../context";
+import {
+  subjectAndQuestionContext,
+  mcqContext,
+  saveContext,
+  dropdownContext,
+} from "../context";
 import Option from "./Option";
 
-const OptionsSection = ({ dropdownValue }) => {
+const OptionsSection = () => {
+  const { dropdownValue } = useContext(dropdownContext);
   const { subjectNumber, questionNumber } = useContext(
     subjectAndQuestionContext
   );
@@ -12,7 +18,7 @@ const OptionsSection = ({ dropdownValue }) => {
   const selectedOption =
     mcqArray[subjectNumber].questions[questionNumber].selectedOption;
 
-useEffect(() => {
+  useEffect(() => {
     const currentQuesionCategory =
       mcqArray[subjectNumber].questions[questionNumber].category;
     // console.log(currentQuesionCategory);
